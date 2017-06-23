@@ -9,7 +9,7 @@
 
 namespace CnapLvivBot
 {
-    using System;
+    using global::System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     

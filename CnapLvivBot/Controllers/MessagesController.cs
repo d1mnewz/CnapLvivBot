@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Web.Http;
 using Microsoft.Bot.Connector;
+using static CnapLvivBot.Data.DataHandler;
 
 namespace CnapLvivBot.Controllers
 {
-    //[BotAuthentication]
+    [BotAuthentication]
     public class MessagesController : ApiController
     {
         /// <summary>
@@ -19,11 +22,11 @@ namespace CnapLvivBot.Controllers
             if (activity.Type == ActivityTypes.Message)
             {
                 ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
-                // calculate something for us to return
-                int length = (activity.Text ?? string.Empty).Length;
 
-                // return our reply to the user
-                Activity reply = activity.CreateReply($"You sent {activity.Text} which was {length} characters");
+                Activity reply = activity.CreateReply();
+
+                reply.Text = GetReplyFromDb(GetIntentsList(activity, WebConfigurationManager.AppSettings["WitClientKey"]).First(), new сnapEntities()); // to build system of analyzing intents
+
                 await connector.Conversations.ReplyToActivityAsync(reply);
             }
             else

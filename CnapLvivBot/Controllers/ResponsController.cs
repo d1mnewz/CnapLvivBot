@@ -8,12 +8,12 @@ namespace CnapLvivBot.Controllers
 {
     public class ResponsController : Controller
     {
-        private сnapEntities db = new сnapEntities();
+        private сnapEntities _db = new сnapEntities();
 
         // GET: Respons
         public async Task<ActionResult> Index()
         {
-            var responses = db.Responses.Include(r => r.Intent);
+            var responses = _db.Responses.Include(r => r.Intent);
             return View(await responses.ToListAsync());
         }
 
@@ -24,7 +24,7 @@ namespace CnapLvivBot.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Respons respons = await db.Responses.FindAsync(id);
+            Respons respons = await _db.Responses.FindAsync(id);
             if (respons == null)
             {
                 return HttpNotFound();
@@ -36,11 +36,11 @@ namespace CnapLvivBot.Controllers
         public ActionResult Create(int id = 0)
         {
             if (id != 0)
-                ViewBag.intentId = new SelectList(db.Intents, "Id", "Content", id);
+                ViewBag.intentId = new SelectList(_db.Intents, "Id", "Content", id);
             else
             {
-                var intents = db.Intents.ToArray();
-                ViewBag.intentId = new SelectList(db.Intents, "Id", "Content", intents.Length);
+                var intents = _db.Intents.ToArray();
+                ViewBag.intentId = new SelectList(_db.Intents, "Id", "Content", intents.Length);
             }
             return View();
         }
@@ -54,12 +54,12 @@ namespace CnapLvivBot.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Responses.Add(respons);
-                await db.SaveChangesAsync();
+                _db.Responses.Add(respons);
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IntentId = new SelectList(db.Intents, "Id", "Content", respons.IntentId);
+            ViewBag.IntentId = new SelectList(_db.Intents, "Id", "Content", respons.IntentId);
             return View(respons);
         }
 
@@ -70,12 +70,12 @@ namespace CnapLvivBot.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Respons respons = await db.Responses.FindAsync(id);
+            Respons respons = await _db.Responses.FindAsync(id);
             if (respons == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IntentId = new SelectList(db.Intents, "Id", "Content", respons.IntentId);
+            ViewBag.IntentId = new SelectList(_db.Intents, "Id", "Content", respons.IntentId);
             return View(respons);
         }
 
@@ -88,11 +88,11 @@ namespace CnapLvivBot.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(respons).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                _db.Entry(respons).State = EntityState.Modified;
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.IntentId = new SelectList(db.Intents, "Id", "Content", respons.IntentId);
+            ViewBag.IntentId = new SelectList(_db.Intents, "Id", "Content", respons.IntentId);
             return View(respons);
         }
 
@@ -103,7 +103,7 @@ namespace CnapLvivBot.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Respons respons = await db.Responses.FindAsync(id);
+            Respons respons = await _db.Responses.FindAsync(id);
             if (respons == null)
             {
                 return HttpNotFound();
@@ -116,9 +116,9 @@ namespace CnapLvivBot.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Respons respons = await db.Responses.FindAsync(id);
-            db.Responses.Remove(respons);
-            await db.SaveChangesAsync();
+            Respons respons = await _db.Responses.FindAsync(id);
+            _db.Responses.Remove(respons);
+            await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -126,7 +126,7 @@ namespace CnapLvivBot.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
