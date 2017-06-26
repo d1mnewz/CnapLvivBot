@@ -157,16 +157,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CnapModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CnapModel.Context.cs</LastGenOutput>
-      <DependentUpon>CnapModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="CnapModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CnapModel.edmx</DependentUpon>
-      <LastGenOutput>CnapModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -193,63 +183,22 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="CnapModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CnapModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CnapModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CnapModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CnapModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CnapModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\IntentsController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
-    <Compile Include="Controllers\ResponsController.cs" />
-    <Compile Include="Data\DataHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Intent.cs">
-      <DependentUpon>CnapModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Respons.cs">
-      <DependentUpon>CnapModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <EntityDeploy Include="CnapModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CnapModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="CnapModel.edmx.diagram">
-      <DependentUpon>CnapModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\web.config" />
-    <Content Include="Views\Intents\Create.cshtml" />
-    <Content Include="Views\Intents\Delete.cshtml" />
-    <Content Include="Views\Intents\Details.cshtml" />
-    <Content Include="Views\Intents\Edit.cshtml" />
-    <Content Include="Views\Intents\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Respons\Create.cshtml" />
-    <Content Include="Views\Respons\Delete.cshtml" />
-    <Content Include="Views\Respons\Details.cshtml" />
-    <Content Include="Views\Respons\Edit.cshtml" />
-    <Content Include="Views\Respons\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -263,6 +212,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CnapLvivBot.Data\CnapLvivBot.Data.csproj">
+      <Project>{2c9bd2be-99fd-4bd6-ba14-cc47ad82ab76}</Project>
+      <Name>CnapLvivBot.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
