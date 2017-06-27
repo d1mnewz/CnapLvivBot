@@ -17,12 +17,10 @@ namespace CnapLvivBot.Data.Infrastructure
 
         public async Task<string> BuildReply(List<string> intents)
         {
+            // get all responses and define the most appropriate response where intents quite similar to intents that are passed as parameter
 
             var res = await Repository.GetAllAsync();
             return res.First().Content;
-            // get from repo and compare to 'intents'
-            //Repository<Response> repository = new Repository<Response>();
-            //repository.GetAll();
         }
     }
 }

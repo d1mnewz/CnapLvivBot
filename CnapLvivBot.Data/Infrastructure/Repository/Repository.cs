@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using CnapLvivBot.Data.Entities;
 using Microsoft.Azure.Documents.Client;
-using Microsoft.IdentityModel.Protocols;
 using Newtonsoft.Json.Linq;
 
 namespace CnapLvivBot.Data.Infrastructure.Repository
