@@ -7,12 +7,13 @@ using CnapLvivBot.DocumentDbSeeding.Seed_Values;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using static CnapLvivBot.DocumentDbSeeding.Seed_Values.PreMadeIntents;
+using static CnapLvivBot.DocumentDbSeeding.Seed_Values.PreMadeResponses;
 
 namespace CnapLvivBot.DocumentDbSeeding
 {
     public class DocumentDbSeeder
     {
-        private DocumentClient _client;
+        private readonly DocumentClient _client;
         private readonly string _databaseName = ConfigurationManager.AppSettings["DatabaseName"];
 
         public DocumentDbSeeder()
@@ -40,7 +41,7 @@ namespace CnapLvivBot.DocumentDbSeeding
 
 
         }
-        private async Task CreateDocumentIfNotExists<T>(  T entity) where T : BaseEntity
+        private async Task CreateDocumentIfNotExists<T>(T entity) where T : BaseEntity
         {
             try
             {
@@ -81,19 +82,21 @@ namespace CnapLvivBot.DocumentDbSeeding
 
         private async Task InitResponses()
         {
-            await CreateDocumentIfNotExists<Response>(
-                new Response
-                {
-                    id = "RandomResponse",
-                    Content = "Hello from CosmosDB",
-                    Intents = new[]
-                    {
-                        new Intent { Content = "intent1" },
-                        new Intent { Content = "intent2" }
-                    }
-                }
-            );
-
+            await CreateDocumentIfNotExists(DocumentsForeignPassport);
+            await CreateDocumentIfNotExists(DocumentsForeignPassportCnap);
+            await CreateDocumentIfNotExists(DocumentsForeignPassportKid);
+            await CreateDocumentIfNotExists(DocumentsRequiredCertifcate13);
+            await CreateDocumentIfNotExists(PriceForeignPassport);
+            await CreateDocumentIfNotExists(PriceForeignPassportKid);
+            await CreateDocumentIfNotExists(UkrainianPassportKid);
+            await CreateDocumentIfNotExists(UkrainianPassportChange);
+            await CreateDocumentIfNotExists(WhereCertificate13);
+            await CreateDocumentIfNotExists(WhereGiveDocumentsPassport);
+            await CreateDocumentIfNotExists(RegisterAbsentPassport);
+            await CreateDocumentIfNotExists(RegisterQueuePassport);
+            await CreateDocumentIfNotExists(ForeignPassportTime);
+            await CreateDocumentIfNotExists(PhotoCnap);
+            await CreateDocumentIfNotExists(ConfirmRegisterForPassport);
         }
 
     }
