@@ -1,26 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using CnapLvivBot.Data.Entities;
 using CnapLvivBot.Data.Infrastructure.Repository;
+using Microsoft.Bot.Builder.Dialogs.Internals;
 
 namespace CnapLvivBot.Data.Infrastructure
 {
     public class ReplyBuilder
     {
-        protected Repository<Response, int> Repository;
+        protected Repository<Response> Repository;
 
         public ReplyBuilder()
         {
-            Repository = new Repository<Response, int>();
+            Repository = new Repository<Response>();
         }
 
-        public async Task<string> BuildReply(List<string> intents)
+        public string BuildReply(List<string> intents)
         {
-            // get all responses and define the most appropriate response where intents quite similar to intents that are passed as parameter
+            if (intents.Count > 0)
+            {
+                var fromDb = Repository.GetAllAsync().Result;
+                var equityList = new List<(Response response, double equityPercent)>();
+                foreach (var response in fromDb)
+                {
 
-            var res = await Repository.GetAllAsync();
-            return res.First().Content;
+                    int equalElements = intents.Intersect(response.Intents.Select(x => x.Content)).Count();
+                    double equivalence = (double) equalElements / Math.Max(response.Intents.Length, intents.Count);
+                    equityList.Add((response, equivalence));
+                }
+
+                if (equityList.Max(x => x.equityPercent) > .6) // magic digit
+                {
+                    return equityList.MaxBy(x => x.equityPercent).response.Content;
+                }
+            }
+            return "Сформулюйте своє питання по-іншому, будь ласка :)";
         }
+
     }
 }

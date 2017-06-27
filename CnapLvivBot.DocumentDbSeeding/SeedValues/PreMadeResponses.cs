@@ -1,7 +1,6 @@
 ﻿using CnapLvivBot.Data.Entities;
-using static CnapLvivBot.DocumentDbSeeding.Seed_Values.PreMadeIntents;
 
-namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
+namespace CnapLvivBot.DocumentDbSeeding.SeedValues
 {
     public static class PreMadeResponses
     {
@@ -13,7 +12,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
                       " (оплатити можна безпосередньо у територіальних підрозділах ЦНАП м. Львова);\r\n" +
                       "* Паспорт громадянина України для виїзду за кордон (за наявності);\r\n",
             id = nameof(DocumentsForeignPassport),
-            Intents = new Intent[] { DocumentsRequired, ForeignPassport }
+            Intents = new Intent[] { PreMadeIntents.DocumentsRequired, PreMadeIntents.ForeignPassport }
         };
 
         public static readonly Response DocumentsForeignPassportKid = new Response()
@@ -25,7 +24,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
                       "* Присутність обох батьків з паспортами громадян України (оригінали,копії);\r\n" +
                       "* Квитанція про оплату адміністративного збору \r\n",
             id = nameof(DocumentsForeignPassportKid),
-            Intents = new Intent[] { DocumentsRequired, ForeignPassport, Kid12Years }
+            Intents = new Intent[] { PreMadeIntents.DocumentsRequired, PreMadeIntents.ForeignPassport, PreMadeIntents.Kid12Years }
         };
 
         public static readonly Response DocumentsForeignPassportCnap = new Response()
@@ -34,7 +33,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
                       "можна подати у будь – якому територіальному підрозділі ЦНАП м. Львова," +
                       " крім підрозділу за адресою площа Ринок,1(бічний вхід).",
             id = nameof(DocumentsForeignPassportCnap),
-            Intents = new Intent[] { ForeignPassport, GivingDocuments, CNAP }
+            Intents = new Intent[] { PreMadeIntents.ForeignPassport, PreMadeIntents.GivingDocuments, PreMadeIntents.CNAP }
         };
 
         public static readonly Response PriceForeignPassport = new Response()
@@ -42,7 +41,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
             Content = "557,32 грн – 20 робочих днів термін виконання," +
                       " 810,32 грн. – 7 робочих днів термін виконання;",
             id = nameof(PriceForeignPassport),
-            Intents = new Intent[] { Price, ForeignPassport }
+            Intents = new Intent[] { PreMadeIntents.Price, PreMadeIntents.ForeignPassport }
         };
 
         public static readonly Response PriceForeignPassportKid = new Response()
@@ -50,7 +49,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
             Content = "557,32 грн – 20 робочих днів термін виконання," +
                       " 810,32 грн. – 7 робочих днів термін виконання;",
             id = nameof(PriceForeignPassportKid),
-            Intents = new Intent[] { Price, ForeignPassport, Kid12Years }
+            Intents = new Intent[] { PreMadeIntents.Price, PreMadeIntents.ForeignPassport, PreMadeIntents.Kid12Years }
         };
 
         public static readonly Response UkrainianPassportKid = new Response()
@@ -60,7 +59,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
                       "* Ідентифікаційний код дитини(оригінал,копія);\r\n" +
                       "* Довідка форми №13  про реєстрацію місця проживання; \r\n",
             id = nameof(UkrainianPassportKid),
-            Intents = new Intent[] { UkrainianPassport, Kid12Years }
+            Intents = new Intent[] { PreMadeIntents.UkrainianPassport, PreMadeIntents.Kid12Years, PreMadeIntents.DocumentsRequired }
         };
 
         public static readonly Response UkrainianPassportChange = new Response()
@@ -71,7 +70,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
                       "* Ідентифікаційний код (оригінал,копія);\r\n" +
                       "* Свідоцтва про народження дітей/шлюб і розірвання шлюбу/ про зміну імені (за наявності);\r\n",
             id = nameof(UkrainianPassportChange),
-            Intents = new Intent[] { UkrainianPassport, Circumstances }
+            Intents = new Intent[] { PreMadeIntents.UkrainianPassport, PreMadeIntents.Circumstances }
         };
 
         public static readonly Response WhereCertificate13 = new Response()
@@ -79,7 +78,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
             Content =
                 "Довідку форми №13 про реєстрацію місця проживання можна оформити у будь – якому територіальному підрозділі ЦНАП м. Львова.",
             id = nameof(WhereCertificate13),
-            Intents = new Intent[] { Where, Certificate13 }
+            Intents = new Intent[] { PreMadeIntents.Where, PreMadeIntents.Certificate13 }
         };
 
         public static readonly Response DocumentsRequiredCertifcate13 = new Response()
@@ -89,7 +88,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
                       "* Свідоцтво про народження дитини (для дітей які не досягли 14 років, оригінал і копія);\r\n" +
                       "* Довідка форми № 2 про склад сім’ї/ будинкова книга;\r\n",
             id = nameof(DocumentsRequiredCertifcate13),
-            Intents = new Intent[] { DocumentsRequired, Certificate13 }
+            Intents = new Intent[] { PreMadeIntents.DocumentsRequired, PreMadeIntents.Certificate13 }
         };
 
         public static readonly Response RegisterQueuePassport = new Response()
@@ -105,14 +104,14 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
                 "громадянина України/паспорта громадянина України" +
                 " для виїзду закордон можна за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n",
             id = nameof(RegisterQueuePassport),
-            Intents = new Intent[] { Register, UkrainianPassport, ForeignPassport }
+            Intents = new Intent[] { PreMadeIntents.Register, PreMadeIntents.UkrainianPassport, PreMadeIntents.ForeignPassport }
         };
 
         public static readonly Response ForeignPassportTime = new Response()
         {
             Content = "20 робочих днів/ 7 робочих днів не враховуючи терміну доставки.\r\n",
             id = nameof(ForeignPassportTime),
-            Intents = new Intent[] { Time, ForeignPassport, Kid12Years }
+            Intents = new Intent[] { PreMadeIntents.Time, PreMadeIntents.ForeignPassport, PreMadeIntents.Kid12Years }
         };
 
         public static readonly Response PhotoCnap = new Response()
@@ -121,7 +120,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
                       " за кордон можна зробити у територіальних підрозділах " +
                       "ЦНАП м. Львова для дорослих та дітей віком від 12 років.",
             id = nameof(PhotoCnap),
-            Intents = new Intent[] { Photo, CNAP /*, ForeignPassport, UkrainianPassport*/}
+            Intents = new Intent[] { PreMadeIntents.Photo, PreMadeIntents.CNAP /*, ForeignPassport, UkrainianPassport*/}
         };
 
         public static readonly Response WhereGiveDocumentsPassport = new Response()
@@ -130,7 +129,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
                       "будь – якому територіальному підрозділі ЦНАП м. Львова," +
                       " крім територіального підрозділу за адресою площа Ринок ,1 (бічний вхід).",
             id = nameof(WhereGiveDocumentsPassport),
-            Intents = new Intent[] { Where, GivingDocuments, CNAP /*, ForeignPassport, UkrainianPassport*/}
+            Intents = new Intent[] { PreMadeIntents.Where, PreMadeIntents.GivingDocuments, PreMadeIntents.CNAP /*, ForeignPassport, UkrainianPassport*/}
         };
 
         public static readonly Response RegisterAbsentPassport = new Response()
@@ -143,7 +142,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
                       ", можливо найближчим часом робота відновиться." +
                       " Моніторити роботу сервісу можна за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap",
             id = nameof(RegisterAbsentPassport),
-            Intents = new Intent[] { Absense, Register /*, ForeignPassport, UkrainianPassport*/}
+            Intents = new Intent[] { PreMadeIntents.Absense, PreMadeIntents.Register /*, ForeignPassport, UkrainianPassport*/}
         };
 
         public static readonly Response ConfirmRegisterForPassport = new Response()
@@ -159,7 +158,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
                       " Також працівники територіальних підрозділів" +
                       " ЦНАП м. Львова  можуть зателефонувати до Вас з метою підтвердження реєстрації на ту чи іншу дату.",
             id = nameof(ConfirmRegisterForPassport),
-            Intents = new Intent[] { Confirm, Register /*, UkrainianPassport, ForeignPassport*/}
+            Intents = new Intent[] { PreMadeIntents.Confirm, PreMadeIntents.Register /*, UkrainianPassport, ForeignPassport*/}
         };
     }
 

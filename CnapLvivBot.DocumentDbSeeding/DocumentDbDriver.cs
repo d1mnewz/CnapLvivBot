@@ -3,11 +3,11 @@ using System.Configuration;
 using System.Net;
 using System.Threading.Tasks;
 using CnapLvivBot.Data.Entities;
-using CnapLvivBot.DocumentDbSeeding.Seed_Values;
+using CnapLvivBot.DocumentDbSeeding.SeedValues;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
-using static CnapLvivBot.DocumentDbSeeding.Seed_Values.PreMadeIntents;
-using static CnapLvivBot.DocumentDbSeeding.Seed_Values.PreMadeResponses;
+using static CnapLvivBot.DocumentDbSeeding.SeedValues.PreMadeIntents;
+using static CnapLvivBot.DocumentDbSeeding.SeedValues.PreMadeResponses;
 
 namespace CnapLvivBot.DocumentDbSeeding
 {

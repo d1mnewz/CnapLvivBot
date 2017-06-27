@@ -54,8 +54,8 @@
     <Compile Include="DocumentDbDriver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Seed Values\PreMadeIntents.cs" />
-    <Compile Include="Seed Values\PreMadeResponses.cs" />
+    <Compile Include="SeedValues\PreMadeIntents.cs" />
+    <Compile Include="SeedValues\PreMadeResponses.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

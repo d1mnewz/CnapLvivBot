@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
+using CnapLvivBot.Data.Entities;
 using Microsoft.Azure.Documents.Client;
 using Newtonsoft.Json.Linq;
 
 namespace CnapLvivBot.Data.Infrastructure.Repository
 {
-    public class Repository<T, TId> : IRepository<T, TId> where T : class
+    public class Repository<T> : IRepository<T> where T : BaseEntity
     {
         protected List<T> List { get; set; }
         private DocumentClient _client;
@@ -31,17 +32,17 @@ namespace CnapLvivBot.Data.Infrastructure.Repository
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _client.Dispose();
         }
 
-        public async Task<bool> AnyAsync(TId id)
+        public async Task<bool> AnyAsync(string id)
         {
-            throw new NotImplementedException();
+            return List.Exists(x => x.id.Equals(id));
         }
 
-        public async Task<T> GetAsync(TId id)
+        public async Task<T> GetAsync(string id)
         {
-            throw new NotImplementedException();
+            return List.FirstOrDefault(x => x.id.Equals(id));
         }
 
         public async Task<IList<T>> GetAllAsync()
@@ -49,37 +50,47 @@ namespace CnapLvivBot.Data.Infrastructure.Repository
             return List;
         }
 
-        public async Task<List<T>> GetAsync(IList<TId> ids)
+        public async Task<List<T>> GetAsync(IList<string> ids)
         {
-            throw new NotImplementedException();
+            return List.Where(x => ids.Contains(x.id)).ToList();
         }
+
+
+        #region //TODO:
+
+
+
+
 
         public async Task InsertAsync(T entity)
         {
-            throw new NotImplementedException();
+            List.Add(entity);
+            // add to db
         }
 
         public async Task InsertAsync(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            List.AddRange(entities);
+            // add to db
         }
 
         public async Task UpdateAsync(T entity)
         {
             throw new NotImplementedException();
+
         }
 
-        public async Task DeleteAsync(TId id)
+        public async Task DeleteAsync(string id)
         {
             throw new NotImplementedException();
         }
+        #endregion
 
-
-        #region Credentials
+        #region Credentials from Web.config
 
         private readonly string EndpointUrl = ConfigurationManager.AppSettings["EndpointUrl"];
         private readonly string PrimaryKey = ConfigurationManager.AppSettings["PrimaryKey"];
-        private readonly string DatabaseName = "CNAP"; // move to app.config
+        private readonly string DatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
 
         #endregion
     }

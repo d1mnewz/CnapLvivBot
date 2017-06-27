@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using CnapLvivBot.Data.Entities;
 
-namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
+namespace CnapLvivBot.DocumentDbSeeding.SeedValues
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class PreMadeIntents
@@ -19,7 +19,7 @@ namespace CnapLvivBot.DocumentDbSeeding.Seed_Values
         public static readonly Intent Photo = new Intent() { Content = "фото", id = nameof(Photo) };
         public static readonly Intent Price = new Intent() { Content = "ціна", id = nameof(Price) };
         public static readonly Intent GivingDocuments = new Intent() { Content = "подання документів", id = nameof(GivingDocuments) };
-        public static readonly Intent ForeignPassport = new Intent() { Content = "закордонний проект", id = nameof(ForeignPassport) };
+        public static readonly Intent ForeignPassport = new Intent() { Content = "закордонний паспорт", id = nameof(ForeignPassport) };
         public static readonly Intent UkrainianPassport = new Intent() { Content = "український паспорт", id = nameof(UkrainianPassport) };
 
     }

@@ -14,10 +14,6 @@ namespace CnapLvivBot.Controllers
     [BotAuthentication]
     public class MessagesController : ApiController
     {
-        /// <summary>
-        /// POST: api/Messages
-        /// Receive a message from a user and reply to it
-        /// </summary>
         public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
         {
             if (activity.Type == ActivityTypes.Message)
@@ -26,7 +22,7 @@ namespace CnapLvivBot.Controllers
 
                 Activity reply = activity.CreateReply();
 
-                reply.Text = await new ReplyBuilder().BuildReply(
+                reply.Text = new ReplyBuilder().BuildReply(
                     GetIntentsList(activity, WebConfigurationManager.AppSettings["WitClientKey"]));
 
                 await connector.Conversations.ReplyToActivityAsync(reply);
@@ -34,7 +30,5 @@ namespace CnapLvivBot.Controllers
             var response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }
-
-
     }
 }
