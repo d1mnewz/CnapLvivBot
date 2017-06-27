@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataHandler.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Intent.cs" />
     <Compile Include="Entities\Response.cs" />
     <Compile Include="Infrastructure\ReplyBuilder.cs" />

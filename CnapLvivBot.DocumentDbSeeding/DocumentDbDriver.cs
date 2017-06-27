@@ -3,8 +3,10 @@ using System.Configuration;
 using System.Net;
 using System.Threading.Tasks;
 using CnapLvivBot.Data.Entities;
+using CnapLvivBot.DocumentDbSeeding.Seed_Values;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
+using static CnapLvivBot.DocumentDbSeeding.Seed_Values.PreMadeIntents;
 
 namespace CnapLvivBot.DocumentDbSeeding
 {
@@ -38,18 +40,17 @@ namespace CnapLvivBot.DocumentDbSeeding
 
 
         }
-        private async Task CreateResponseDocumentIfNotExists(string databaseName, string collectionName, Response response)
+        private async Task CreateDocumentIfNotExists<T>(  T entity) where T : BaseEntity
         {
             try
             {
-                await _client.ReadDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, response.id));
-
+                await _client.ReadDocumentAsync(UriFactory.CreateDocumentUri(_databaseName, typeof(T).Name, entity.id));
             }
             catch (DocumentClientException de)
             {
                 if (de.StatusCode == HttpStatusCode.NotFound)
                 {
-                    await _client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), response);
+                    await _client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(_databaseName, typeof(T).Name), entity);
 
                 }
                 else
@@ -61,14 +62,26 @@ namespace CnapLvivBot.DocumentDbSeeding
 
         private async Task InitIntents()
         {
-            // do work
+            await CreateDocumentIfNotExists(Photo);
+            await CreateDocumentIfNotExists(PreMadeIntents.Absense);
+            await CreateDocumentIfNotExists(CNAP);
+            await CreateDocumentIfNotExists(Kid12Years);
+            await CreateDocumentIfNotExists(Circumstances);
+            await CreateDocumentIfNotExists(Register);
+            await CreateDocumentIfNotExists(DocumentsRequired);
+            await CreateDocumentIfNotExists(Time);
+            await CreateDocumentIfNotExists(Confirm);
+            await CreateDocumentIfNotExists(Certificate13);
+            await CreateDocumentIfNotExists(Where);
+            await CreateDocumentIfNotExists(UkrainianPassport);
+            await CreateDocumentIfNotExists(Price);
+            await CreateDocumentIfNotExists(GivingDocuments);
+            await CreateDocumentIfNotExists(ForeignPassport);
         }
 
         private async Task InitResponses()
         {
-            await CreateResponseDocumentIfNotExists(
-                _databaseName,
-                typeof(Response).Name,
+            await CreateDocumentIfNotExists<Response>(
                 new Response
                 {
                     id = "RandomResponse",

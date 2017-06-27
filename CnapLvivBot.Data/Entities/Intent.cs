@@ -1,9 +1,9 @@
-﻿namespace CnapLvivBot.Data.Entities
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace CnapLvivBot.Data.Entities
 {
-    public class Intent
+    public  class Intent : BaseEntity
     {
-        // ReSharper disable once InconsistentNaming
-        public string id { get; set; }
         public string Content { get; set; }
 
     }
