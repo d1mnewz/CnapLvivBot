@@ -42,7 +42,7 @@ namespace CnapLvivBot.DocumentDbSeeding
         {
             try
             {
-                await _client.ReadDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, response.Id));
+                await _client.ReadDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, response.id));
 
             }
             catch (DocumentClientException de)
@@ -61,7 +61,7 @@ namespace CnapLvivBot.DocumentDbSeeding
 
         private async Task InitIntents()
         {
-
+            // do work
         }
 
         private async Task InitResponses()
@@ -71,7 +71,7 @@ namespace CnapLvivBot.DocumentDbSeeding
                 typeof(Response).Name,
                 new Response
                 {
-                    Id = "RandomResponse",
+                    id = "RandomResponse",
                     Content = "Hello from CosmosDB",
                     Intents = new[]
                     {
