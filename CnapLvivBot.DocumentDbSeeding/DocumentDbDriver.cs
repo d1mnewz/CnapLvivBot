@@ -91,11 +91,15 @@ namespace CnapLvivBot.DocumentDbSeeding
             await CreateDocumentIfNotExists(UkrainianPassportKid);
             await CreateDocumentIfNotExists(UkrainianPassportChange);
             await CreateDocumentIfNotExists(WhereCertificate13);
-            await CreateDocumentIfNotExists(WhereGiveDocumentsPassport);
+            await CreateDocumentIfNotExists(WhereGiveDocumentsForeignPassport);
+            await CreateDocumentIfNotExists(WhereGiveDocumentsUkrainianPassport);
             await CreateDocumentIfNotExists(RegisterAbsentPassport);
             await CreateDocumentIfNotExists(RegisterQueuePassport);
             await CreateDocumentIfNotExists(ForeignPassportTime);
             await CreateDocumentIfNotExists(PhotoCnap);
+            await CreateDocumentIfNotExists(PhotoCnapForeignPassport);
+            await CreateDocumentIfNotExists(PhotoCnapUkrainianPassport);
+
             await CreateDocumentIfNotExists(ConfirmRegisterForPassport);
         }
 
