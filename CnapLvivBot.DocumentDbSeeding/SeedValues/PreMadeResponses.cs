@@ -92,7 +92,7 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
             Intents = new[] { DocumentsRequired, Certificate13 }
         };
 
-        public static readonly Response RegisterQueuePassport = new Response()
+        public static readonly Response RegisterQueueUkrainianPassport = new Response()
         {
             Content =
                 "Зареєструватися у чергу Ви можете двома способами: через електронний сервіс \"Попередній запис до ЦНАП\" " +
@@ -104,15 +104,36 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
                 " та в цей же день можете подавати документи .\r\nЗаписатися у чергу для оформлення паспорту " +
                 "громадянина України/паспорта громадянина України" +
                 " для виїзду закордон можна за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n",
-            id = nameof(RegisterQueuePassport),
-            Intents = new[] { Register, UkrainianPassport, ForeignPassport }
+            id = nameof(RegisterQueueUkrainianPassport),
+            Intents = new[] { Register, UkrainianPassport }
+        };
+        public static readonly Response RegisterQueueForeignPassport = new Response()
+        {
+            Content =
+                "Зареєструватися у чергу Ви можете двома способами: через електронний сервіс \"Попередній запис до ЦНАП\" " +
+                "або отримавши талончик безпосередньо у територіальних підрозділах Центру" +
+                " надання адміністративних послуг м. Львова. Попередній запис до ЦНАП здійснюється на офіційному " +
+                "сайті Львівської міської ради.  Щодня оновлюється система  на сайті Львівської міської ради" +
+                " та додає можливість попереднього запису до ЦНАП м. Львова. Зареєстувавшись в електронній черзі" +
+                " (ЕСКЧ) у терміналі, що знаходиться безпосередньо в офісі, Ви отримуєте чек з порядковим номером" +
+                " та в цей же день можете подавати документи .\r\nЗаписатися у чергу для оформлення паспорту " +
+                "громадянина України/паспорта громадянина України" +
+                " для виїзду закордон можна за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n",
+            id = nameof(RegisterQueueForeignPassport),
+            Intents = new[] { Register, ForeignPassport }
         };
 
+        public static readonly Response ForeignPassportTimeKid = new Response()
+        {
+            Content = "20 робочих днів/ 7 робочих днів не враховуючи терміну доставки.\r\n",
+            id = nameof(ForeignPassportTimeKid),
+            Intents = new[] { Time, ForeignPassport, Kid12Years }
+        };
         public static readonly Response ForeignPassportTime = new Response()
         {
             Content = "20 робочих днів/ 7 робочих днів не враховуючи терміну доставки.\r\n",
             id = nameof(ForeignPassportTime),
-            Intents = new[] { Time, ForeignPassport, Kid12Years }
+            Intents = new[] { Time, ForeignPassport}
         };
 
         public static readonly Response PhotoCnap = new Response()
@@ -121,7 +142,7 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
                       " за кордон можна зробити у територіальних підрозділах " +
                       "ЦНАП м. Львова для дорослих та дітей віком від 12 років.",
             id = nameof(PhotoCnap),
-            Intents = new[] { Photo, CNAP}
+            Intents = new[] { Photo, CNAP }
         };
         public static readonly Response PhotoCnapUkrainianPassport = new Response()
         {

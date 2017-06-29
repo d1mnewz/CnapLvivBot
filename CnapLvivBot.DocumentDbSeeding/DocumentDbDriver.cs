@@ -3,7 +3,6 @@ using System.Configuration;
 using System.Net;
 using System.Threading.Tasks;
 using CnapLvivBot.Data.Entities;
-using CnapLvivBot.DocumentDbSeeding.SeedValues;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using static CnapLvivBot.DocumentDbSeeding.SeedValues.PreMadeIntents;
@@ -64,7 +63,7 @@ namespace CnapLvivBot.DocumentDbSeeding
         private async Task InitIntents()
         {
             await CreateDocumentIfNotExists(Photo);
-            await CreateDocumentIfNotExists(PreMadeIntents.Absense);
+            await CreateDocumentIfNotExists(Absense);
             await CreateDocumentIfNotExists(CNAP);
             await CreateDocumentIfNotExists(Kid12Years);
             await CreateDocumentIfNotExists(Circumstances);
@@ -94,8 +93,10 @@ namespace CnapLvivBot.DocumentDbSeeding
             await CreateDocumentIfNotExists(WhereGiveDocumentsForeignPassport);
             await CreateDocumentIfNotExists(WhereGiveDocumentsUkrainianPassport);
             await CreateDocumentIfNotExists(RegisterAbsentPassport);
-            await CreateDocumentIfNotExists(RegisterQueuePassport);
+            await CreateDocumentIfNotExists(RegisterQueueUkrainianPassport);
+            await CreateDocumentIfNotExists(RegisterQueueForeignPassport);
             await CreateDocumentIfNotExists(ForeignPassportTime);
+            await CreateDocumentIfNotExists(ForeignPassportTimeKid);
             await CreateDocumentIfNotExists(PhotoCnap);
             await CreateDocumentIfNotExists(PhotoCnapForeignPassport);
             await CreateDocumentIfNotExists(PhotoCnapUkrainianPassport);

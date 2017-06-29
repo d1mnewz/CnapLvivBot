@@ -22,11 +22,13 @@ namespace CnapLvivBot.Data.Infrastructure
             {
                 var fromDb = Repository.GetAllAsync().Result;
                 var equityList = new List<(Response response, double equityPercent)>();
+                int equalElements;
+                double equivalence;
                 foreach (var response in fromDb)
                 {
 
-                    int equalElements = intents.Intersect(response.Intents.Select(x => x.Content)).Count();
-                    double equivalence = (double) equalElements / Math.Max(response.Intents.Length, intents.Count);
+                    equalElements = intents.Intersect(response.Intents.Select(x => x.Content)).Count();
+                    equivalence = (double) equalElements / Math.Max(response.Intents.Length, intents.Count);
                     equityList.Add((response, equivalence));
                 }
 
