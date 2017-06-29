@@ -21,7 +21,7 @@ namespace CnapLvivBot.Data.Infrastructure
             if (intents.Count > 0)
             {
                 var fromDb = Repository.GetAllAsync().Result;
-                var equityList = new List<(Response response, double equityPercent)>();
+                var equityList = new Dictionary<Response, double>();
                 int equalElements;
                 double equivalence;
                 foreach (var response in fromDb)
@@ -29,12 +29,12 @@ namespace CnapLvivBot.Data.Infrastructure
 
                     equalElements = intents.Intersect(response.Intents.Select(x => x.Content)).Count();
                     equivalence = (double) equalElements / Math.Max(response.Intents.Length, intents.Count);
-                    equityList.Add((response, equivalence));
+                    equityList.Add(response, equivalence);
                 }
 
-                if (equityList.Max(x => x.equityPercent) > .6) // magic digit
+                if (equityList.Max(x => x.Value) > .6) // magic digit
                 {
-                    return equityList.MaxBy(x => x.equityPercent).response.Content;
+                    return equityList.MaxBy(x => x.Value).Key.Content;
                 }
             }
             return "Сформулюйте своє питання по-іншому, будь ласка :)";
