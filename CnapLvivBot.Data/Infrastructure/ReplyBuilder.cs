@@ -22,14 +22,12 @@ namespace CnapLvivBot.Data.Infrastructure
             {
                 var fromDb = Repository.GetAllAsync().Result;
                 var equityList = new Dictionary<Response, double>();
-                int equalElements;
-                double equivalence;
                 foreach (var response in fromDb)
                 {
 
-                    equalElements = intents.Intersect(response.Intents.Select(x => x.Content)).Count();
-                    equivalence = (double) equalElements / Math.Max(response.Intents.Length, intents.Count);
-                    equityList.Add(response, equivalence);
+                    var equalElements = intents.Intersect(response.Intents.Select(x => x.Content)).Count();
+                    var equivalence = (double) equalElements / Math.Max(response.Intents.Length, intents.Count);
+                    equityList.Add(key: response, value: equivalence);
                 }
 
                 if (equityList.Max(x => x.Value) > .6) // magic digit

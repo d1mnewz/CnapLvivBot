@@ -39,7 +39,7 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
 
         public static readonly Response PriceForeignPassport = new Response()
         {
-            Content = "557,32 грн – 20 робочих днів термін виконання," +
+            Content = "Закордонний паспорт: 557,32 грн – 20 робочих днів термін виконання," +
                       " 810,32 грн. – 7 робочих днів термін виконання;",
             id = nameof(PriceForeignPassport),
             Intents = new[] { Price, ForeignPassport }
@@ -47,7 +47,7 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
 
         public static readonly Response PriceForeignPassportKid = new Response()
         {
-            Content = "557,32 грн – 20 робочих днів термін виконання," +
+            Content = "Закордонний паспорт для дитини: 557,32 грн – 20 робочих днів термін виконання," +
                       " 810,32 грн. – 7 робочих днів термін виконання;",
             id = nameof(PriceForeignPassportKid),
             Intents = new[] { Price, ForeignPassport, Kid12Years }
