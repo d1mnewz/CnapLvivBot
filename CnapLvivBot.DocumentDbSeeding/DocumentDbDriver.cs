@@ -106,7 +106,7 @@ namespace CnapLvivBot.DocumentDbSeeding
             await _client.CreateDocumentIfNotExists(RegisterCnap, _databaseName);
             await _client.CreateDocumentIfNotExists(WhereToRegister, _databaseName);
             await _client.CreateDocumentIfNotExists(HowToRegister, _databaseName);
-            await _client.CreateDocumentIfNotExists(WhereGiveDocumentsForeignPassport1, _databaseName);
+            //await _client.CreateDocumentIfNotExists(WhereGiveDocumentsForeignPassport1, _databaseName);
             await _client.CreateDocumentIfNotExists(UkrainianPassportKid1, _databaseName);
             await _client.CreateDocumentIfNotExists(DocumentsForeignPassport1, _databaseName);
             await _client.CreateDocumentIfNotExists(WhereToPayForPassport, _databaseName);

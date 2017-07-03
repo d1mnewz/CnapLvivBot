@@ -222,21 +222,21 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
             Intents = new[] { Where, GivingDocuments, CNAP, UkrainianPassport }
         };
 
+        //public static readonly Response WhereGiveDocumentsForeignPassport = new Response()
+        //{
+        //    Content = "Подати документи для оформлення паспорта громадянина України можна у " +
+        //              "будь – якому територіальному підрозділі ЦНАП м. Львова," +
+        //              " крім територіального підрозділу за адресою площа Ринок ,1 (бічний вхід).",
+        //    id = nameof(WhereGiveDocumentsForeignPassport),
+        //    Intents = new[] { Where, GivingDocuments, ForeignPassport }
+        //};
         public static readonly Response WhereGiveDocumentsForeignPassport = new Response()
-        {
-            Content = "Подати документи для оформлення паспорта громадянина України можна у " +
-                      "будь – якому територіальному підрозділі ЦНАП м. Львова," +
-                      " крім територіального підрозділу за адресою площа Ринок ,1 (бічний вхід).",
-            id = nameof(WhereGiveDocumentsForeignPassport),
-            Intents = new[] { Where, GivingDocuments, ForeignPassport }
-        };
-        public static readonly Response WhereGiveDocumentsForeignPassport1 = new Response()
         {
             Content = "Для оформлення паспорта громадянина України для виїзду за кордон Ви можете звернутись " +
                       "у територіальні підрозділ ЦНАП м. Львова за адресами:" +
                       " вул. К. Левицького, 67, вул. М. Хвильового, 14а," +
                       " вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а.",
-            id = nameof(WhereGiveDocumentsForeignPassport1),
+            id = nameof(WhereGiveDocumentsForeignPassport),
             Intents = new[] { Where, GivingDocuments, ForeignPassport }
         };
 
