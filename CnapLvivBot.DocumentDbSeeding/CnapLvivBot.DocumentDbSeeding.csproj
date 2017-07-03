@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\DocumentClientExtensions.cs" />
     <Compile Include="DocumentDbDriver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,8 +59,12 @@
     <Compile Include="SeedValues\PreMadeResponses.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+    <None Include="QnA\Додаткові-питання.docx" />
+    <None Include="QnA\Оформлення-паспорту-громадянина-України-типові-питання %281%29.docx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CnapLvivBot.Data\CnapLvivBot.Data.csproj">

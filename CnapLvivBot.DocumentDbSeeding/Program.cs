@@ -1,11 +1,10 @@
 ﻿namespace CnapLvivBot.DocumentDbSeeding
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            DocumentDbSeeder ddd = new DocumentDbSeeder();
-
+            var ddd = new DocumentDbSeeder();
         }
     }
 }
