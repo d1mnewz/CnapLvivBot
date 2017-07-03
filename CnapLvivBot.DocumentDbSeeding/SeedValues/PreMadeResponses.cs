@@ -1,10 +1,18 @@
-﻿using CnapLvivBot.Data.Entities;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CnapLvivBot.Data.Entities;
 using static CnapLvivBot.DocumentDbSeeding.SeedValues.PreMadeIntents;
 
 namespace CnapLvivBot.DocumentDbSeeding.SeedValues
 {
     public static class PreMadeResponses
     {
+
+        public static IEnumerable<Response> LoadResponses()
+        {
+            var type = typeof(PreMadeResponses);
+            return type.GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public).Select(p => p.GetValue(null) as Response).ToList();
+        }
 
         public static readonly Response PassportGeneralizedTime = new Response()
         {
@@ -288,7 +296,7 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
                       " є обмеженою на подачу документів для оформлення паспорта громадянина України / " +
                       "паспорта громадянина України для виїзду за кордон.\r\n",
             id = nameof(HowToRegister),
-            Intents = new[] { Register}
+            Intents = new[] { Register }
         };
 
         public static readonly Response HowToRegisterPassport = new Response()
@@ -332,7 +340,7 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
                       " є обмеженою на подачу документів для оформлення паспорта громадянина України / " +
                       "паспорта громадянина України для виїзду за кордон.\r\n",
             id = nameof(HowToRegisterPassportCnap),
-            Intents = new[] { Register, Passport, CNAP}
+            Intents = new[] { Register, Passport, CNAP }
         };
 
         public static readonly Response HowToRegisterUkrainianPassport = new Response()

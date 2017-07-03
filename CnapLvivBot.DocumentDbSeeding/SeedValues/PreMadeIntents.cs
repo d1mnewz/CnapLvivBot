@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Linq;
 using CnapLvivBot.Data.Entities;
 
 namespace CnapLvivBot.DocumentDbSeeding.SeedValues
@@ -6,6 +7,12 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
 
     public static class PreMadeIntents
     {
+        public static IEnumerable<Intent> LoadIntents()
+        {
+            var type = typeof(PreMadeIntents);
+            return type.GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public).Select(p => p.GetValue(null) as Intent).ToList();
+        }
+
         public static readonly Intent Kid12Years = new Intent { Content = "дитина 12 років", id = nameof(Kid12Years) };
         public static readonly Intent Absense = new Intent { Content = "відсутність", id = nameof(Absense) };
         public static readonly Intent Where = new Intent { Content = "де", id = nameof(Where) };
@@ -25,7 +32,6 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
         public static readonly Intent Pay = new Intent {Content = "оплатити", id = nameof(Pay)};
         public static readonly Intent Requisites = new Intent {Content = "реквізити", id = nameof(Requisites)};
         public static readonly Intent Not = new Intent {Content = "окрім", id = nameof(Not)};
-
 
         public static readonly Intent Start = new Intent {Content = "/start", id = nameof(Start)};
     }
