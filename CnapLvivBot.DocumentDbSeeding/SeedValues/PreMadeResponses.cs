@@ -29,6 +29,7 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
             id = nameof(PassportGeneralizedTime),
             Intents = new[] { Passport, Time }
         };
+
         public static readonly Response PassportGeneralizedPrice = new Response()
         {
             Content = "Паспорт громадянина України\r\n" +
@@ -52,6 +53,7 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
             id = nameof(WhereToPay),
             Intents = new[] { Where, Pay }
         };
+
         public static readonly Response WhereToPayForPassport = new Response()
         {
             Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
@@ -59,6 +61,7 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
             id = nameof(WhereToPayForPassport),
             Intents = new[] { Where, Pay, Passport }
         };
+
         public static readonly Response WhereToPayForUkrainianPassport = new Response()
         {
             Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
@@ -66,6 +69,7 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
             id = nameof(WhereToPayForUkrainianPassport),
             Intents = new[] { Where, Pay, UkrainianPassport }
         };
+
         public static readonly Response WhereToPayForForeignPassport = new Response()
         {
             Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
@@ -73,6 +77,7 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
             id = nameof(WhereToPayForForeignPassport),
             Intents = new[] { Where, Pay, ForeignPassport }
         };
+
         public static readonly Response DocumentsForeignPassport = new Response()
         {
             Content = "Для оформлення закордонного паспорту потрібні:\r\n" +
@@ -84,18 +89,9 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
             Intents = new[] { DocumentsRequired, ForeignPassport }
         };
 
-        public static readonly Response DocumentsForeignPassport1 = new Response()
-        {
-            Content = "*\tПаспорт громадянина України;\r\n" +
-                      "*\tКвитанція про оплату адміністративного збору (оплатити можна безпосередньо у територіальних підрозділах ЦНАП м. Львова);\r\n" +
-                      "*\tПаспорт громадянина України для виїзду за кордон (за наявності);\r\n",
-            id = nameof(DocumentsForeignPassport1),
-            Intents = new[] { DocumentsRequired, ForeignPassport }
-        };
-
         public static readonly Response DocumentsForeignPassportKid = new Response()
         {
-            Content = "Для оформлення паспорта громадянина України для дитини потрібно:\r\n" +
+            Content = "Для оформлення паспорта громадянина України для дитини для виїзду за кордон потрібно:\r\n" +
                       "* Свідоцтво про народження дитини (оригінал,копія);\r\n" +
                       "* Фотокартки: 3,5 х 4,5 (2шт.), 10 х 15 (1шт.);\r\n" +
                       "* Довідка форми №2 про склад сім’ї ;\r\n" +
@@ -132,22 +128,12 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
 
         public static readonly Response UkrainianPassportKid = new Response()
         {
-            Content = "* Свідоцтво про народження дитини (оригінал,копія);\r\n" +
-                      "* Оригінали паспортів батьків;\r\n" +
-                      "* Ідентифікаційний код дитини(оригінал,копія);\r\n" +
-                      "* Довідка форми №13  про реєстрацію місця проживання; \r\n",
-            id = nameof(UkrainianPassportKid),
-            Intents = new[] { UkrainianPassport, DocumentsRequired }
-        };
-
-        public static readonly Response UkrainianPassportKid1 = new Response()
-        {
             Content = "Оформлення і видача паспорта громадянина України з безконтактним електронним носієм " +
                       "вперше після досягнення 14-річного віку:" +
                       "\r\n*\tСвідоцтво про народження дитини (оригінал, копія);" +
                       "\r\n*\tОригінали паспортів батьків;\r\n-\tІдентифікаційний код дитини (оригінал, копія);" +
                       "\r\n*\tДовідка форми №13  про реєстрацію місця проживання;\r\n",
-            id = nameof(UkrainianPassportKid1),
+            id = nameof(UkrainianPassportKid),
             Intents = new[] { UkrainianPassport, DocumentsRequired }
         };
 
@@ -170,13 +156,13 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
             Intents = new[] { Where, Certificate13 }
         };
 
-        public static readonly Response DocumentsRequiredCertifcate13 = new Response()
+        public static readonly Response DocumentsRequiredCertificate13 = new Response()
         {
             Content = "Для оформлення довідки форми № 13 потрібні:\r\n" +
                       "* Паспорт громадянина України (оригінал,копія);\r\n" +
                       "* Свідоцтво про народження дитини (для дітей які не досягли 14 років, оригінал і копія);\r\n" +
                       "* Довідка форми № 2 про склад сім’ї/ будинкова книга;\r\n",
-            id = nameof(DocumentsRequiredCertifcate13),
+            id = nameof(DocumentsRequiredCertificate13),
             Intents = new[] { DocumentsRequired, Certificate13 }
         };
 
@@ -230,14 +216,6 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
             Intents = new[] { Where, GivingDocuments, CNAP, UkrainianPassport }
         };
 
-        //public static readonly Response WhereGiveDocumentsForeignPassport = new Response()
-        //{
-        //    Content = "Подати документи для оформлення паспорта громадянина України можна у " +
-        //              "будь – якому територіальному підрозділі ЦНАП м. Львова," +
-        //              " крім територіального підрозділу за адресою площа Ринок ,1 (бічний вхід).",
-        //    id = nameof(WhereGiveDocumentsForeignPassport),
-        //    Intents = new[] { Where, GivingDocuments, ForeignPassport }
-        //};
         public static readonly Response WhereGiveDocumentsForeignPassport = new Response()
         {
             Content = "Для оформлення паспорта громадянина України для виїзду за кордон Ви можете звернутись " +
@@ -565,8 +543,6 @@ namespace CnapLvivBot.DocumentDbSeeding.SeedValues
             id = nameof(WhereForeignPassportNotCnap),
             Intents = new[] { Where, ForeignPassport, Not, CNAP }
         };
-
-
 
         public static readonly Response StartResponse = new Response()
         {
