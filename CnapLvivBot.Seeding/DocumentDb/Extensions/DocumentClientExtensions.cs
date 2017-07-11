@@ -12,13 +12,13 @@ namespace CnapLvivBot.Seeding.DocumentDb.Extensions
         {
             try
             {
-                await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(databaseName, typeof(T).Name, entity.id)).ConfigureAwait(false);
+                await client.ReadDocumentAsync(documentUri: UriFactory.CreateDocumentUri(databaseName, typeof(T).Name, entity.id)).ConfigureAwait(false);
             }
             catch (DocumentClientException de)
             {
                 if (de.StatusCode == HttpStatusCode.NotFound)
                 {
-                    await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(databaseName, typeof(T).Name), entity).ConfigureAwait(false);
+                    await client.CreateDocumentAsync(documentCollectionUri: UriFactory.CreateDocumentCollectionUri(databaseName, typeof(T).Name), document: entity).ConfigureAwait(false);
 
                 }
                 else
@@ -33,7 +33,7 @@ namespace CnapLvivBot.Seeding.DocumentDb.Extensions
         {
             try
             {
-                await client.ReadDatabaseAsync(UriFactory.CreateDatabaseUri(databaseName)).ConfigureAwait(false);
+                await client.ReadDatabaseAsync(databaseUri: UriFactory.CreateDatabaseUri(databaseName)).ConfigureAwait(false);
             }
             catch (DocumentClientException de)
             {
@@ -43,7 +43,7 @@ namespace CnapLvivBot.Seeding.DocumentDb.Extensions
                 }
                 throw;
             }
-            await client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri(databaseName)).ConfigureAwait(false);
+            await client.DeleteDatabaseAsync(databaseUri: UriFactory.CreateDatabaseUri(databaseName)).ConfigureAwait(false);
         }
     }
 }
