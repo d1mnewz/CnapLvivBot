@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot", "CnapLvivBot\CnapLvivBot.csproj", "{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot.Data", "CnapLvivBot.Data\CnapLvivBot.Data.csproj", "{2C9BD2BE-99FD-4BD6-BA14-CC47AD82AB76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot.DocumentDbSeeding", "CnapLvivBot.DocumentDbSeeding\CnapLvivBot.DocumentDbSeeding.csproj", "{608B3551-8B9D-470C-9D83-49B7ACF12A7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot.Seeding", "CnapLvivBot.Seeding\CnapLvivBot.Seeding.csproj", "{608B3551-8B9D-470C-9D83-49B7ACF12A7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

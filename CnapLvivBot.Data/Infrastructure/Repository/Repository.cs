@@ -35,10 +35,7 @@ namespace CnapLvivBot.Data.Infrastructure.Repository
             _client.Dispose();
         }
 
-        public async Task<bool> AnyAsync(string id)
-        {
-            return List.Exists(x => x.id.Equals(id));
-        }
+        public async Task<bool> AnyAsync(string id) => List.Exists(x => x.id.Equals(id));
 
         public async Task<T> GetAsync(string id)
         {

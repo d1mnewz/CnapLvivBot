@@ -2,7 +2,7 @@
 using System.Linq;
 using CnapLvivBot.Data.Entities;
 
-namespace CnapLvivBot.DocumentDbSeeding.SeedValues
+namespace CnapLvivBot.Seeding.SeedValues
 {
 
     public static class PreMadeIntents

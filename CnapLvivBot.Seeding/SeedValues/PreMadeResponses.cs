@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CnapLvivBot.Data.Entities;
-using static CnapLvivBot.DocumentDbSeeding.SeedValues.PreMadeIntents;
+using static CnapLvivBot.Seeding.SeedValues.PreMadeIntents;
 
-namespace CnapLvivBot.DocumentDbSeeding.SeedValues
+namespace CnapLvivBot.Seeding.SeedValues
 {
     public static class PreMadeResponses
     {
