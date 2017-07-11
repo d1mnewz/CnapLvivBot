@@ -1,17 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Reflection;
 using CnapLvivBot.Data.Entities;
+using static System.Reflection.BindingFlags;
 using static CnapLvivBot.Seeding.SeedValues.PreMadeIntents;
 
 namespace CnapLvivBot.Seeding.SeedValues
 {
+    [SuppressMessage("ReSharper", "ComplexConditionExpression")]
     public static class PreMadeResponses
     {
-
+        /// <exception cref="ArgumentNullException">
+        ///         <paramref name="source" /> or <paramref name="selector" /> is null.</exception>
+        /// <exception cref="TargetException">In the .NET for Windows Store apps or the Portable Class Library, catch <see cref="T:System.Exception" /> instead.The field is non-static and <paramref name="obj" /> is null. </exception>
+        /// <exception cref="NotSupportedException">A field is marked literal, but the field does not have one of the accepted literal types. </exception>
+        /// <exception cref="FieldAccessException">In the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, <see cref="T:System.MemberAccessException" />, instead.The caller does not have permission to access this field. </exception>
+        /// <exception cref="ArgumentException">The method is neither declared nor inherited by the class of <paramref name="obj" />. </exception>
         public static IEnumerable<Response> LoadResponses()
         {
             var type = typeof(PreMadeResponses);
-            return type.GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public).Select(p => p.GetValue(null) as Response).ToList();
+            return type.GetFields(Static | Public).Select(p => p.GetValue(null) as Response).ToList();
         }
 
         public static readonly Response PassportGeneralizedTime = new Response()

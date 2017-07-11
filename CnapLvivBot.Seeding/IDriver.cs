@@ -4,6 +4,6 @@ namespace CnapLvivBot.Seeding
 {
     public interface IDriver
     {
-        Task Run();
+        Task RunAsync();
     }
 }

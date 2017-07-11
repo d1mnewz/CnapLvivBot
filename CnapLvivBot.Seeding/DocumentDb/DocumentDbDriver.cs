@@ -29,7 +29,7 @@ namespace CnapLvivBot.Seeding.DocumentDb
         ///         <name>database</name>
         ///     </paramref>
         ///     is not set.</exception>
-        public async Task Run()
+        public async Task RunAsync()
         {
             await _client.DeleteDatabaseIfExistsAsync(_databaseName).ConfigureAwait(false);
             WriteLine($"Database {_databaseName} deleted");

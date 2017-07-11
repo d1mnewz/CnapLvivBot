@@ -13,9 +13,14 @@ namespace CnapLvivBot.Data.Infrastructure.Repository
     public class MongoDbRepository<T> : IRepository<T> where T : BaseEntity
     {
         protected List<T> List { get; set; }
-        private MongoClient _client;
+        private readonly MongoClient _client;
 
 
+        /// <exception cref="FormatException">
+        ///         <paramref name="value" /> does not consist of an optional sign followed by a sequence of digits (0 through 9). </exception>
+        /// <exception cref="OverflowException">
+        ///         <paramref name="value" /> represents a number that is less than <see cref="F:System.Int32.MinValue" /> or greater than <see cref="F:System.Int32.MaxValue" />. </exception>
+        /// <exception cref="NotSupportedException">The collection is read-only and the operation attempts to modify the collection. </exception>
         public MongoDbRepository()
         {
             List = new List<T>();
