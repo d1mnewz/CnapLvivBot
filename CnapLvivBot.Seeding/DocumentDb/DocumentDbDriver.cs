@@ -7,6 +7,7 @@ using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using static System.Configuration.ConfigurationManager;
 using static System.Console;
+using static CnapLvivBot.Seeding.SeedValues.PreMadeIntents;
 
 namespace CnapLvivBot.Seeding.DocumentDb
 {
@@ -28,7 +29,7 @@ namespace CnapLvivBot.Seeding.DocumentDb
         ///         <name>database</name>
         ///     </paramref>
         ///     is not set.</exception>
-        public async void Run()
+        public async Task Run()
         {
             await _client.DeleteDatabaseIfExistsAsync(_databaseName).ConfigureAwait(false);
             WriteLine($"Database {_databaseName} deleted");
@@ -62,7 +63,7 @@ namespace CnapLvivBot.Seeding.DocumentDb
         private async Task InitIntentsAsync()
         {
             WriteLine();
-            var intents = PreMadeIntents.LoadIntents();
+            var intents = LoadIntents();
 
             foreach (var intent in intents)
             {

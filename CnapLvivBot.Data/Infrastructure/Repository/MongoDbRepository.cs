@@ -1,39 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using CnapLvivBot.Data.Entities;
-using Microsoft.Azure.Documents.Client;
-using Newtonsoft.Json.Linq;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using static System.Configuration.ConfigurationManager;
+using static System.Convert;
 
 namespace CnapLvivBot.Data.Infrastructure.Repository
 {
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class MongoDbRepository<T> : IRepository<T> where T : BaseEntity
     {
         protected List<T> List { get; set; }
-        private DocumentClient _client;
+        private MongoClient _client;
 
 
-        public Repository()
+        public MongoDbRepository()
         {
             List = new List<T>();
-            _client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
-            var db = (_client.ReadDatabaseFeedAsync()).Result.Single(d => d.Id == DatabaseName);
-            var collection = (_client.ReadDocumentCollectionFeedAsync(db.CollectionsLink)).Result.Single(c => c.Id == typeof(T).Name);
-            var docs = _client.CreateDocumentQuery(collection.DocumentsLink).ToList();
-            foreach (var document in docs)
+            var credential = MongoCredential.CreateCredential(databaseName: AppSettings["DatabaseName"], username: AppSettings["MongoDbUsername"], password: AppSettings["MongoDbPassword"]);
+
+            var mongoClientSettings = new MongoClientSettings
             {
-                List.Add(JObject.Parse(document.ToString()).ToObject<T>());
-            }
+                Server = new MongoServerAddress(host: AppSettings["MongoDbServerAddress"], port: ToInt32(AppSettings["MongoDbServerPort"])),
+                Credentials = new List<MongoCredential> { credential }
+            };
+            _client = new MongoClient(settings: mongoClientSettings);
+
+            var targetDb = _client.GetDatabase(AppSettings["DatabaseName"]);
+            var collection = targetDb.GetCollection<T>(typeof(T).Name);
+            List = collection.Find(new BsonDocument()).ToListAsync().GetAwaiter().GetResult();
+
+
         }
 
 
-
-        public void Dispose()
-        {
-            _client.Dispose();
-        }
 
         public async Task<bool> AnyAsync(string id) => List.Exists(x => x.id.Equals(id));
 
@@ -83,12 +85,9 @@ namespace CnapLvivBot.Data.Infrastructure.Repository
         }
         #endregion
 
-        #region Credentials from Web.config
-
-        private readonly string EndpointUrl = ConfigurationManager.AppSettings["EndpointUrl"];
-        private readonly string PrimaryKey = ConfigurationManager.AppSettings["PrimaryKey"];
-        private readonly string DatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
-
-        #endregion
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

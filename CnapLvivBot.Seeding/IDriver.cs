@@ -1,7 +1,9 @@
-﻿namespace CnapLvivBot.Seeding
+﻿using System.Threading.Tasks;
+
+namespace CnapLvivBot.Seeding
 {
     public interface IDriver
     {
-        void Run();
+        Task Run();
     }
 }

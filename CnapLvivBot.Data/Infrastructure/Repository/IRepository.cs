@@ -6,6 +6,7 @@ namespace CnapLvivBot.Data.Infrastructure.Repository
 {
     public interface IRepository<T> : IDisposable
     {
+
         Task<bool> AnyAsync(string id);
         Task<T> GetAsync(string id);
         Task<IList<T>> GetAllAsync();

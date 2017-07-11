@@ -4,16 +4,30 @@ using System.Linq;
 using CnapLvivBot.Data.Entities;
 using CnapLvivBot.Data.Infrastructure.Repository;
 using Microsoft.Bot.Builder.Dialogs.Internals;
+using static System.Configuration.ConfigurationManager;
 
 namespace CnapLvivBot.Data.Infrastructure
 {
     public class ReplyBuilder
     {
-        protected Repository<Response> Repository;
+        protected IRepository<Response> Repository;
 
+        /// <exception cref="Exception">Invalid source from Web.config.</exception>
+        /// <exception cref="NotSupportedException">The collection is read-only and the operation attempts to modify the collection. </exception>
         public ReplyBuilder()
         {
-            Repository = new Repository<Response>();
+            switch (AppSettings["Source"])
+            {
+                case "document":
+                    Repository = new DocumentDbRepository<Response>();
+                    break;
+                case "mongo":
+                    Repository = new MongoDbRepository<Response>();
+                    break;
+                default:
+                    throw new Exception("Invalid source from Web.config.");
+            }
+
         }
 
         public string BuildReply(List<string> intents)
@@ -26,7 +40,7 @@ namespace CnapLvivBot.Data.Infrastructure
                 {
 
                     var equalElements = intents.Intersect(response.Intents.Select(x => x.Content)).Count();
-                    var equivalence = (double) equalElements / Math.Max(response.Intents.Length, intents.Count);
+                    var equivalence = (double)equalElements / Math.Max(response.Intents.Length, intents.Count);
                     equityList.Add(key: response, value: equivalence);
                 }
 

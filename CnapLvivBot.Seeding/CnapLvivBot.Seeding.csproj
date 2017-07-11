@@ -66,6 +66,7 @@
     <Compile Include="DocumentDb\Extensions\DocumentClientExtensions.cs" />
     <Compile Include="DocumentDb\DocumentDbDriver.cs" />
     <Compile Include="IDriver.cs" />
+    <Compile Include="MongoDb\Extensions\MongoDbClientExtensions.cs" />
     <Compile Include="MongoDb\MongoDbDriver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

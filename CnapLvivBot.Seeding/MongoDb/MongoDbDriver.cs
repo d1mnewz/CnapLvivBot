@@ -1,32 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using CnapLvivBot.Data.Entities;
+using CnapLvivBot.Seeding.MongoDb.Extensions;
 using MongoDB.Driver;
 using static System.Configuration.ConfigurationManager;
 using static System.Convert;
+using static CnapLvivBot.Seeding.SeedValues.PreMadeIntents;
+using static CnapLvivBot.Seeding.SeedValues.PreMadeResponses;
 
 namespace CnapLvivBot.Seeding.MongoDb
 {
     public class MongoDbDriver : IDriver
     {
         protected readonly MongoClient Client;
-        /// <exception cref="NotSupportedException">The collection is read-only and the operation attempts to modify the collection. </exception>
+        
         public MongoDbDriver()
         {
-            //Client = new MongoClient(connectionString: AppSettings["MongoDbEndpointUrl"]);
-            var credential = MongoCredential.CreateCredential(databaseName: AppSettings["DatabaseName"], username: AppSettings["MongoDbUsername"], password: AppSettings["MongoDbPassword"]);
-
-            var mongoClientSettings = new MongoClientSettings
-            {
-                Server = new MongoServerAddress(host: AppSettings["MongoDbServerAddress"], port: ToInt32(AppSettings["MongoDbServerPort"])),
-                Credentials = new List<MongoCredential> { credential }
-            };
-            Client = new MongoClient(mongoClientSettings);
+            Client = Client.GetClient();
         }
 
-        public void Run()
+
+
+        public async Task Run()
         {
-            var res = Client.GetDatabase("cnap");
-            res.CreateCollection("hello");
+            var targetDb = Client.GetDatabase("cnap");
+            await targetDb.DropCollectionAsync(typeof(Intent).Name).ConfigureAwait(false);
+            await targetDb.DropCollectionAsync(typeof(Response).Name).ConfigureAwait(false);
+            await targetDb.CreateCollectionAsync(typeof(Intent).Name).ConfigureAwait(false);
+            await targetDb.CreateCollectionAsync(typeof(Response).Name).ConfigureAwait(false);
+            var intents = targetDb.GetCollection<Intent>(typeof(Intent).Name);
+            var responses = targetDb.GetCollection<Response>(typeof(Response).Name);
+            await intents.InsertManyAsync(documents: LoadIntents()).ConfigureAwait(false);
+            await responses.InsertManyAsync(documents: LoadResponses()).ConfigureAwait(false);
         }
     }
 }

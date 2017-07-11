@@ -29,7 +29,7 @@ namespace CnapLvivBot.Seeding
                     WriteLine("Driver not found");
                     break;
             }
-            driver?.Run();
+            driver?.Run().Wait();
 
             WriteLine("Done. press any key to exit");
             ReadLine();
