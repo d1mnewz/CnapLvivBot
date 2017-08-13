@@ -2,10 +2,7 @@
 {
     public class Response : BaseEntity
     {
-
         public string Content { get; set; }
-
-        public Intent[] Intents { get; set; } 
-
+        public Intent[] Intents { get; set; }
     }
 }

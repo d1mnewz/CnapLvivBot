@@ -2,7 +2,6 @@
 using System.IO;
 using CnapLvivBot.Seeding.DocumentDb;
 using CnapLvivBot.Seeding.MongoDb;
-using static System.Console;
 
 namespace CnapLvivBot.Seeding
 {
@@ -16,8 +15,8 @@ namespace CnapLvivBot.Seeding
         /// <exception cref="ObjectDisposedException">The <see cref="T:System.Threading.Tasks.Task" /> has been disposed.</exception>
         public static void Main()
         {
-            WriteLine("Switch function: mongo - use MongoDB at local server, document - use cloud DocumentDb");
-            var selection = ReadLine();
+	        Console.WriteLine("Switch function: mongo - use MongoDB at cloud server, document - use cloud DocumentDb");
+            var selection = Console.ReadLine();
             IDriver driver = null;
             switch (selection)
             {
@@ -28,13 +27,13 @@ namespace CnapLvivBot.Seeding
                     driver = new DocumentDbDriver();
                     break;
                 default:
-                    WriteLine("Driver not found");
+	                Console.WriteLine("Driver not found");
                     break;
             }
             driver?.RunAsync().Wait();
 
-            WriteLine("Done. press any key to exit");
-            ReadLine();
+	        Console.WriteLine("Done. press any key to exit");
+	        Console.ReadLine();
         }
     }
 }

@@ -6,8 +6,6 @@ using CnapLvivBot.Seeding.SeedValues;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using static System.Configuration.ConfigurationManager;
-using static System.Console;
-using static CnapLvivBot.Seeding.SeedValues.PreMadeIntents;
 
 namespace CnapLvivBot.Seeding.DocumentDb
 {
@@ -32,10 +30,10 @@ namespace CnapLvivBot.Seeding.DocumentDb
         public async Task RunAsync()
         {
             await _client.DeleteDatabaseIfExistsAsync(_databaseName).ConfigureAwait(false);
-            WriteLine($"Database {_databaseName} deleted");
+            Console.WriteLine($"Database {_databaseName} deleted");
             await _client.CreateDatabaseIfNotExistsAsync(new Database { Id = _databaseName }).ConfigureAwait(false);
 
-            WriteLine($"Database {_databaseName} created");
+            Console.WriteLine($"Database {_databaseName} created");
 
             await CreateCollectionsAsync().ConfigureAwait(false);
             await InitCollectionsAsync().ConfigureAwait(false);
@@ -44,46 +42,46 @@ namespace CnapLvivBot.Seeding.DocumentDb
         private async Task CreateCollectionsAsync()
         {
             await _client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(_databaseName), new DocumentCollection { Id = typeof(Intent).Name }).ConfigureAwait(false);
-            WriteLine($"Collection {typeof(Intent).Name} created");
+            Console.WriteLine($"Collection {typeof(Intent).Name} created");
             await _client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(_databaseName), new DocumentCollection { Id = typeof(Response).Name }).ConfigureAwait(false);
-            WriteLine($"Collection {typeof(Response).Name} created");
+            Console.WriteLine($"Collection {typeof(Response).Name} created");
 
         }
 
         private async Task InitCollectionsAsync()
         {
             await InitIntentsAsync().ConfigureAwait(false);
-            WriteLine($"Collection {typeof(Intent).Name} inited");
+            Console.WriteLine($"Collection {typeof(Intent).Name} inited");
 
             await InitResponsesAsync().ConfigureAwait(false);
-            WriteLine($"Collection {typeof(Response).Name} inited");
+            Console.WriteLine($"Collection {typeof(Response).Name} inited");
         }
 
 
         private async Task InitIntentsAsync()
         {
-            WriteLine();
-            var intents = LoadIntents();
+            Console.WriteLine();
+            var intents = PreMadeIntents.LoadIntents();
 
             foreach (var intent in intents)
             {
                 await _client.CreateDocumentIfNotExistsAsync(intent, _databaseName).ConfigureAwait(false);
-                WriteLine($"{intent.id} intent inserted; ");
+                Console.WriteLine($"{intent.id} intent inserted; ");
             }
-            WriteLine();
+            Console.WriteLine();
         }
 
         private async Task InitResponsesAsync()
         {
-            WriteLine();
+            Console.WriteLine();
             var responses = PreMadeResponses.LoadResponses();
 
             foreach (var response in responses)
             {
                 await _client.CreateDocumentIfNotExistsAsync(response, _databaseName).ConfigureAwait(false);
-                WriteLine($"{response.id} response inserted; ");
+                Console.WriteLine($"{response.id} response inserted; ");
             }
-            WriteLine();
+            Console.WriteLine();
         }
 
 

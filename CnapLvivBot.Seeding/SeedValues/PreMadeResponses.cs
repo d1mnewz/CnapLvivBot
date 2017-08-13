@@ -9,559 +9,725 @@ using static CnapLvivBot.Seeding.SeedValues.PreMadeIntents;
 
 namespace CnapLvivBot.Seeding.SeedValues
 {
-    [SuppressMessage("ReSharper", "ComplexConditionExpression")]
-    public static class PreMadeResponses
-    {
-        /// <exception cref="ArgumentNullException">
-        ///         <paramref name="source" /> or <paramref name="selector" /> is null.</exception>
-        /// <exception cref="TargetException">In the .NET for Windows Store apps or the Portable Class Library, catch <see cref="T:System.Exception" /> instead.The field is non-static and <paramref name="obj" /> is null. </exception>
-        /// <exception cref="NotSupportedException">A field is marked literal, but the field does not have one of the accepted literal types. </exception>
-        /// <exception cref="FieldAccessException">In the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, <see cref="T:System.MemberAccessException" />, instead.The caller does not have permission to access this field. </exception>
-        /// <exception cref="ArgumentException">The method is neither declared nor inherited by the class of <paramref name="obj" />. </exception>
-        public static IEnumerable<Response> LoadResponses()
-        {
-            var type = typeof(PreMadeResponses);
-            return type.GetFields(Static | Public).Select(p => p.GetValue(null) as Response).ToList();
-        }
+	[SuppressMessage("ReSharper", "ComplexConditionExpression")]
+	public static class PreMadeResponses
+	{
+		/// <exception cref="TargetException">In the .NET for Windows Store apps or the Portable Class Library, catch <see cref="T:System.Exception" /> instead.The field is non-static and <paramref name="obj" /> is null. </exception>
+		/// <exception cref="NotSupportedException">A field is marked literal, but the field does not have one of the accepted literal types. </exception>
+		/// <exception cref="FieldAccessException">In the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, <see cref="T:System.MemberAccessException" />, instead.The caller does not have permission to access this field. </exception>
+		/// <exception cref="ArgumentException">The method is neither declared nor inherited by the class of <paramref name="obj" />. </exception>
+		public static IEnumerable<Response> LoadResponses()
+		{
+			var type = typeof(PreMadeResponses);
+			return type.GetFields(Static | Public).Select(p => p.GetValue(null) as Response).ToList();
+		}
 
-        public static readonly Response PassportGeneralizedTime = new Response()
-        {
-            Content = "Паспорт громадянина України\r\n" +
-                      "20 робочих днів    -  279 грн.;\r\n10 робочих днів    -  366 грн.;\r\n" +
-                      "та державного мита – 34 грн. (2 неоподатковуваних мінімуми доходів громадян)" +
-                      " (сплачується тільки у разі обміну у зв’язку з " +
-                      "непридатністю паспорта для подальшого використання). \r\n" +
-                      "Паспорт громадянина України з безконтактним електронним" +
-                      " носієм вперше після досягнення 14-річного віку є безкоштовним" +
-                      " та виготовляється 20 робочих днів.\r\n\r\nПаспорт громадянина" +
-                      " України для виїзду за кордон \r\n20  робочих днів  - 557,32грн." +
-                      "\r\n7 робочих днів   - 810,32грн",
-            id = nameof(PassportGeneralizedTime),
-            Intents = new[] { Passport, Time }
-        };
+		public static readonly Response PassportGeneralizedTime = new Response()
+		{
+			Content = "Паспорт громадянина України\r\n" +
+					  "20 робочих днів    -  279 грн.;\r\n10 робочих днів    -  366 грн.;\r\n" +
+					  "та державного мита – 34 грн. (2 неоподатковуваних мінімуми доходів громадян)" +
+					  " (сплачується тільки у разі обміну у зв’язку з " +
+					  "непридатністю паспорта для подальшого використання). \r\n" +
+					  "Паспорт громадянина України з безконтактним електронним" +
+					  " носієм вперше після досягнення 14-річного віку є безкоштовним" +
+					  " та виготовляється 20 робочих днів.\r\n\r\nПаспорт громадянина" +
+					  " України для виїзду за кордон \r\n20  робочих днів  - 557,32грн." +
+					  "\r\n7 робочих днів   - 810,32грн",
+			id = nameof(PassportGeneralizedTime),
+			Intents = new[] { Passport, Time }
+		};
 
-        public static readonly Response PassportGeneralizedPrice = new Response()
-        {
-            Content = "Паспорт громадянина України\r\n" +
-                      "20 робочих днів    -  279 грн.;\r\n10 робочих днів    -  366 грн.;\r\n" +
-                      "та державного мита – 34 грн. (2 неоподатковуваних мінімуми доходів громадян)" +
-                      " (сплачується тільки у разі обміну у зв’язку з " +
-                      "непридатністю паспорта для подальшого використання). \r\n" +
-                      "Паспорт громадянина України з безконтактним електронним" +
-                      " носієм вперше після досягнення 14-річного віку є безкоштовним" +
-                      " та виготовляється 20 робочих днів.\r\n\r\nПаспорт громадянина" +
-                      " України для виїзду за кордон \r\n20  робочих днів  - 557,32грн." +
-                      "\r\n7 робочих днів   - 810,32грн",
-            id = nameof(PassportGeneralizedPrice),
-            Intents = new[] { Passport, Price }
-        };
+		public static readonly Response PassportGeneralizedPrice = new Response()
+		{
+			Content = "Паспорт громадянина України\r\n" +
+					  "20 робочих днів    -  279 грн.;\r\n10 робочих днів    -  366 грн.;\r\n" +
+					  "та державного мита – 34 грн. (2 неоподатковуваних мінімуми доходів громадян)" +
+					  " (сплачується тільки у разі обміну у зв’язку з " +
+					  "непридатністю паспорта для подальшого використання). \r\n" +
+					  "Паспорт громадянина України з безконтактним електронним" +
+					  " носієм вперше після досягнення 14-річного віку є безкоштовним" +
+					  " та виготовляється 20 робочих днів.\r\n\r\nПаспорт громадянина" +
+					  " України для виїзду за кордон \r\n20  робочих днів  - 557,32грн." +
+					  "\r\n7 робочих днів   - 810,32грн",
+			id = nameof(PassportGeneralizedPrice),
+			Intents = new[] { Passport, Price }
+		};
 
-        public static readonly Response WhereToPay = new Response()
-        {
-            Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
-                      "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
-            id = nameof(WhereToPay),
-            Intents = new[] { Where, Pay }
-        };
+		public static readonly Response WhereToPay = new Response()
+		{
+			Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
+					  "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
+			id = nameof(WhereToPay),
+			Intents = new[] { Where, Pay }
+		};
 
-        public static readonly Response WhereToPayForPassport = new Response()
-        {
-            Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
-                      "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
-            id = nameof(WhereToPayForPassport),
-            Intents = new[] { Where, Pay, Passport }
-        };
+		public static readonly Response WhereToPayForPassport = new Response()
+		{
+			Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
+					  "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
+			id = nameof(WhereToPayForPassport),
+			Intents = new[] { Where, Pay, Passport }
+		};
 
-        public static readonly Response WhereToPayForUkrainianPassport = new Response()
-        {
-            Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
-                      "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
-            id = nameof(WhereToPayForUkrainianPassport),
-            Intents = new[] { Where, Pay, UkrainianPassport }
-        };
+		public static readonly Response WhereToPayForUkrainianPassport = new Response()
+		{
+			Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
+					  "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
+			id = nameof(WhereToPayForUkrainianPassport),
+			Intents = new[] { Where, Pay, UkrainianPassport }
+		};
 
-        public static readonly Response WhereToPayForForeignPassport = new Response()
-        {
-            Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
-                      "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
-            id = nameof(WhereToPayForForeignPassport),
-            Intents = new[] { Where, Pay, ForeignPassport }
-        };
+		public static readonly Response WhereToPayForForeignPassport = new Response()
+		{
+			Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
+					  "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
+			id = nameof(WhereToPayForForeignPassport),
+			Intents = new[] { Where, Pay, ForeignPassport }
+		};
 
-        public static readonly Response DocumentsForeignPassport = new Response()
-        {
-            Content = "Для оформлення закордонного паспорту потрібні:\r\n" +
-                      "* Паспорт громадянина України;\r\n" +
-                      "* Квитанція про оплату адміністративного збору" +
-                      " (оплатити можна безпосередньо у територіальних підрозділах ЦНАП м. Львова);\r\n" +
-                      "* Паспорт громадянина України для виїзду за кордон (за наявності);\r\n",
-            id = nameof(DocumentsForeignPassport),
-            Intents = new[] { DocumentsRequired, ForeignPassport }
-        };
+		// TODO:
+		public static readonly Response WhereGetForeignPassport = new Response()
+		{
+			Content = "Temponary, expecting text.",
+			id = nameof(WhereGetForeignPassport),
+			Intents = new[] { Where, Get, ForeignPassport }
+		};
 
-        public static readonly Response DocumentsForeignPassportKid = new Response()
-        {
-            Content = "Для оформлення паспорта громадянина України для дитини для виїзду за кордон потрібно:\r\n" +
-                      "* Свідоцтво про народження дитини (оригінал,копія);\r\n" +
-                      "* Фотокартки: 3,5 х 4,5 (2шт.), 10 х 15 (1шт.);\r\n" +
-                      "* Довідка форми №2 про склад сім’ї ;\r\n" +
-                      "* Присутність обох батьків з паспортами громадян України (оригінали,копії);\r\n" +
-                      "* Квитанція про оплату адміністративного збору \r\n",
-            id = nameof(DocumentsForeignPassportKid),
-            Intents = new[] { DocumentsRequired, ForeignPassport, Kid12Years }
-        };
 
-        public static readonly Response DocumentsForeignPassportCnap = new Response()
-        {
-            Content = "Так, документи на оформлення паспорта громадянина України для виїзду закордон " +
-                      "можна подати у будь – якому територіальному підрозділі ЦНАП м. Львова," +
-                      " крім підрозділу за адресою площа Ринок,1(бічний вхід).",
-            id = nameof(DocumentsForeignPassportCnap),
-            Intents = new[] { ForeignPassport, GivingDocuments, CNAP }
-        };
+		public static readonly Response DocumentsForeignPassport = new Response()
+		{
+			Content = "Для оформлення закордонного паспорту потрібні:\r\n" +
+					  "* Паспорт громадянина України;\r\n" +
+					  "* Квитанція про оплату адміністративного збору" +
+					  " (оплатити можна безпосередньо у територіальних підрозділах ЦНАП м. Львова);\r\n" +
+					  "* Паспорт громадянина України для виїзду за кордон (за наявності);\r\n",
+			id = nameof(DocumentsForeignPassport),
+			Intents = new[] { DocumentsRequired, ForeignPassport }
+		};
 
-        public static readonly Response PriceForeignPassport = new Response()
-        {
-            Content = "Закордонний паспорт: 557,32 грн – 20 робочих днів термін виконання," +
-                      " 810,32 грн. – 7 робочих днів термін виконання;",
-            id = nameof(PriceForeignPassport),
-            Intents = new[] { Price, ForeignPassport }
-        };
+		public static readonly Response DocumentsForeignPassportKid = new Response()
+		{
+			Content = "Для оформлення паспорта громадянина України для дитини для виїзду за кордон потрібно:\r\n" +
+					  "* Свідоцтво про народження дитини (оригінал,копія);\r\n" +
+					  "* Фотокартки: 3,5 х 4,5 (2шт.), 10 х 15 (1шт.);\r\n" +
+					  "* Довідка форми №2 про склад сім’ї ;\r\n" +
+					  "* Присутність обох батьків з паспортами громадян України (оригінали,копії);\r\n" +
+					  "* Квитанція про оплату адміністративного збору \r\n",
+			id = nameof(DocumentsForeignPassportKid),
+			Intents = new[] { DocumentsRequired, ForeignPassport, Kid12Years }
+		};
 
-        public static readonly Response PriceForeignPassportKid = new Response()
-        {
-            Content = "Закордонний паспорт для дитини: 557,32 грн – 20 робочих днів термін виконання," +
-                      " 810,32 грн. – 7 робочих днів термін виконання;",
-            id = nameof(PriceForeignPassportKid),
-            Intents = new[] { Price, ForeignPassport, Kid12Years }
-        };
+		public static readonly Response DocumentsForeignPassportCnap = new Response()
+		{
+			Content = "Так, документи на оформлення паспорта громадянина України для виїзду закордон " +
+					  "можна подати у будь – якому територіальному підрозділі ЦНАП м. Львова," +
+					  " крім підрозділу за адресою площа Ринок,1(бічний вхід).",
+			id = nameof(DocumentsForeignPassportCnap),
+			Intents = new[] { ForeignPassport, GivingDocuments, CNAP }
+		};
 
-        public static readonly Response UkrainianPassportKid = new Response()
-        {
-            Content = "Оформлення і видача паспорта громадянина України з безконтактним електронним носієм " +
-                      "вперше після досягнення 14-річного віку:" +
-                      "\r\n*\tСвідоцтво про народження дитини (оригінал, копія);" +
-                      "\r\n*\tОригінали паспортів батьків;\r\n-\tІдентифікаційний код дитини (оригінал, копія);" +
-                      "\r\n*\tДовідка форми №13  про реєстрацію місця проживання;\r\n",
-            id = nameof(UkrainianPassportKid),
-            Intents = new[] { UkrainianPassport, DocumentsRequired }
-        };
+		public static readonly Response PriceForeignPassport = new Response()
+		{
+			Content = "Закордонний паспорт: 557,32 грн – 20 робочих днів термін виконання," +
+					  " 810,32 грн. – 7 робочих днів термін виконання;",
+			id = nameof(PriceForeignPassport),
+			Intents = new[] { Price, ForeignPassport }
+		};
 
-        public static readonly Response UkrainianPassportChange = new Response()
-        {
-            Content = "* Паспорт громадянина України, що підлягає обміну;\r\n" +
-                      "* Документи, що підтверджують обставини, у зв’язку з якими паспорт підлягає обміну (крім випадків коли строк дії паспорта закінчився);\r\n" +
-                      "* Квитанція про оплату адміністративного збору;\r\n" +
-                      "* Ідентифікаційний код (оригінал,копія);\r\n" +
-                      "* Свідоцтва про народження дітей/шлюб і розірвання шлюбу/ про зміну імені (за наявності);\r\n",
-            id = nameof(UkrainianPassportChange),
-            Intents = new[] { UkrainianPassport, Circumstances }
-        };
+		public static readonly Response PriceForeignPassportKid = new Response()
+		{
+			Content = "Закордонний паспорт для дитини: 557,32 грн – 20 робочих днів термін виконання," +
+					  " 810,32 грн. – 7 робочих днів термін виконання;",
+			id = nameof(PriceForeignPassportKid),
+			Intents = new[] { Price, ForeignPassport, Kid12Years }
+		};
 
-        public static readonly Response WhereCertificate13 = new Response()
-        {
-            Content =
-                "Довідку форми №13 про реєстрацію місця проживання можна оформити у будь – якому територіальному підрозділі ЦНАП м. Львова.",
-            id = nameof(WhereCertificate13),
-            Intents = new[] { Where, Certificate13 }
-        };
 
-        public static readonly Response DocumentsRequiredCertificate13 = new Response()
-        {
-            Content = "Для оформлення довідки форми № 13 потрібні:\r\n" +
-                      "* Паспорт громадянина України (оригінал,копія);\r\n" +
-                      "* Свідоцтво про народження дитини (для дітей які не досягли 14 років, оригінал і копія);\r\n" +
-                      "* Довідка форми № 2 про склад сім’ї/ будинкова книга;\r\n",
-            id = nameof(DocumentsRequiredCertificate13),
-            Intents = new[] { DocumentsRequired, Certificate13 }
-        };
+		public static readonly Response PriceUkrainianPassportKid = new Response()
+		{
+			Content = "Паспорт громадянина України з безконтактним електронним" +
+					  " носієм вперше після досягнення 14-річного віку є безкоштовним" +
+					  " та виготовляється 20 робочих днів.\r\n\r\n",
+			id = nameof(PriceUkrainianPassportKid),
+			Intents = new[] { Price, UkrainianPassport, Kid12Years }
+		};
 
-        public static readonly Response ForeignPassportTimeKid = new Response()
-        {
-            Content = "20 робочих днів/ 7 робочих днів не враховуючи терміну доставки.\r\n",
-            id = nameof(ForeignPassportTimeKid),
-            Intents = new[] { Time, ForeignPassport, Kid12Years }
-        };
+		public static readonly Response PriceUkrainianPassport = new Response()
+		{
+			Content = @"Паспорт громадянина України\r\n\r\n20 робочих днів  -  279 грн.;" +
+					  @"\r\n10 робочих днів    -  366 грн.;\r\n\r\n" +
+					  @"та державного мита – 34 грн." +
+					  @"(2 неоподатковуваних мінімуми доходів громадян)\r\n" +
+					  @" (сплачується тільки у разі обміну у зв’язку з\r\n" +
+					  @"непридатністю паспорта для подальшого використання)." +
+					  @"\r\n\r\n" +
+					  @"Паспорт громадянина України з безконтактним електронним\r\n" +
+					  @" носієм вперше після досягнення 14-річного віку є безкоштовним\r\n" +
+					  @" та виготовляється 20 робочих днів.\r\n\r\n",
+			id = nameof(PriceUkrainianPassport),
+			Intents = new[] { Price, UkrainianPassport }
+		};
 
-        public static readonly Response ForeignPassportTime = new Response()
-        {
-            Content = "20 робочих днів/ 7 робочих днів не враховуючи терміну доставки.\r\n",
-            id = nameof(ForeignPassportTime),
-            Intents = new[] { Time, ForeignPassport }
-        };
 
-        public static readonly Response PhotoCnap = new Response()
-        {
-            Content = "Так, фотографію для оформлення паспорта громадянина України/для виїзду" +
-                      " за кордон можна зробити у територіальних підрозділах " +
-                      "ЦНАП м. Львова для дорослих та дітей віком від 12 років.",
-            id = nameof(PhotoCnap),
-            Intents = new[] { Photo, CNAP }
-        };
+		public static readonly Response UkrainianPassportDocuments = new Response()
+		{
+			Content = "Оформлення і видача паспорта громадянина України з безконтактним електронним носієм " +
+			          "вперше після досягнення 14-річного віку:" +
+			          "\r\n*\tСвідоцтво про народження дитини (оригінал, копія);" +
+			          "\r\n*\tОригінали паспортів батьків;\r\n-\tІдентифікаційний код дитини (оригінал, копія);" +
+			          "\r\n*\tДовідка форми №13  про реєстрацію місця проживання;\r\n",
+			id = nameof(UkrainianPassport),
+			Intents = new[] { UkrainianPassport, DocumentsRequired }
+		};
 
-        public static readonly Response PhotoCnapUkrainianPassport = new Response()
-        {
-            Content = "Так, фотографію для оформлення паспорта громадянина України/для виїзду" +
-                      " за кордон можна зробити у територіальних підрозділах " +
-                      "ЦНАП м. Львова для дорослих та дітей віком від 12 років.",
-            id = nameof(PhotoCnapUkrainianPassport),
-            Intents = new[] { Photo, CNAP, UkrainianPassport }
-        };
+		public static readonly Response UkrainianPassportKidDocuments = new Response()
+		{
+			Content = "Оформлення і видача паспорта громадянина України з безконтактним електронним носієм " +
+			          "вперше після досягнення 14-річного віку:" +
+			          "\r\n*\tСвідоцтво про народження дитини (оригінал, копія);" +
+			          "\r\n*\tОригінали паспортів батьків;\r\n-\tІдентифікаційний код дитини (оригінал, копія);" +
+			          "\r\n*\tДовідка форми №13  про реєстрацію місця проживання;\r\n",
+			id = nameof(UkrainianPassportKidDocuments),
+			Intents = new[] { UkrainianPassport, DocumentsRequired, Kid12Years }
+		};
 
-        public static readonly Response PhotoCnapForeignPassport = new Response()
-        {
-            Content = "Так, фотографію для оформлення паспорта громадянина України/для виїзду" +
-                      " за кордон можна зробити у територіальних підрозділах " +
-                      "ЦНАП м. Львова для дорослих та дітей віком від 12 років.",
-            id = nameof(PhotoCnapForeignPassport),
-            Intents = new[] { Photo, CNAP, ForeignPassport }
-        };
+		public static readonly Response UkrainianPassportChange = new Response()
+		{
+			Content = "* Паспорт громадянина України, що підлягає обміну;\r\n" +
+					  "* Документи, що підтверджують обставини, у зв’язку з якими паспорт підлягає обміну (крім випадків коли строк дії паспорта закінчився);\r\n" +
+					  "* Квитанція про оплату адміністративного збору;\r\n" +
+					  "* Ідентифікаційний код (оригінал,копія);\r\n" +
+					  "* Свідоцтва про народження дітей/шлюб і розірвання шлюбу/ про зміну імені (за наявності);\r\n",
+			id = nameof(UkrainianPassportChange),
+			Intents = new[] { UkrainianPassport, Circumstances }
+		};
 
-        public static readonly Response WhereGiveDocumentsUkrainianPassport = new Response()
-        {
-            Content = "Подати документи для оформлення паспорта громадянина України можна у " +
-                      "будь – якому територіальному підрозділі ЦНАП м. Львова," +
-                      " крім територіального підрозділу за адресою площа Ринок ,1 (бічний вхід).",
-            id = nameof(WhereGiveDocumentsUkrainianPassport),
-            Intents = new[] { Where, GivingDocuments, CNAP, UkrainianPassport }
-        };
+		public static readonly Response UkrainianPassportDocumentsToChange = new Response()
+		{
+			Content = "* Паспорт громадянина України, що підлягає обміну;\r\n" +
+					  "* Документи, що підтверджують обставини, у зв’язку з якими паспорт підлягає обміну (крім випадків коли строк дії паспорта закінчився);\r\n" +
+					  "* Квитанція про оплату адміністративного збору;\r\n" +
+					  "* Ідентифікаційний код (оригінал,копія);\r\n" +
+					  "* Свідоцтва про народження дітей/шлюб і розірвання шлюбу/ про зміну імені (за наявності);\r\n",
+			id = nameof(UkrainianPassportDocumentsToChange),
+			Intents = new[] { UkrainianPassport, Circumstances, DocumentsRequired }
+		};
 
-        public static readonly Response WhereGiveDocumentsForeignPassport = new Response()
-        {
-            Content = "Для оформлення паспорта громадянина України для виїзду за кордон Ви можете звернутись " +
-                      "у територіальні підрозділ ЦНАП м. Львова за адресами:" +
-                      " вул. К. Левицького, 67, вул. М. Хвильового, 14а," +
-                      " вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а.",
-            id = nameof(WhereGiveDocumentsForeignPassport),
-            Intents = new[] { Where, GivingDocuments, ForeignPassport }
-        };
 
-        public static readonly Response RegisterAbsentPassport = new Response()
-        {
-            Content = "Станом на сьогодні  в електронному сервісі " +
-                      "\"Попередній запис до ЦНАП\" проводяться технічні налаштування. " +
-                      "Оскільки попередній запис на червень місяць повністю заповнений," +
-                      " пропонуємо Вам звернутися у територіальні підрозділи Центру надання адміністративних послуг " +
-                      "і отримати талон на подачу документів безпосередньо на місці (крім суботи та понеділка)" +
-                      ", можливо найближчим часом робота відновиться." +
-                      " Моніторити роботу сервісу можна за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap",
-            id = nameof(RegisterAbsentPassport),
-            Intents = new[] { Absense, Register /*, ForeignPassport, UkrainianPassport*/}
-        };
+		public static readonly Response PassportDocumentsToChange = new Response()
+		{
+			Content = "* Паспорт громадянина України, що підлягає обміну;\r\n" +
+					  "* Документи, що підтверджують обставини, у зв’язку з якими паспорт підлягає обміну (крім випадків коли строк дії паспорта закінчився);\r\n" +
+					  "* Квитанція про оплату адміністративного збору;\r\n" +
+					  "* Ідентифікаційний код (оригінал,копія);\r\n" +
+					  "* Свідоцтва про народження дітей/шлюб і розірвання шлюбу/ про зміну імені (за наявності);\r\n",
+			id = nameof(PassportDocumentsToChange),
+			Intents = new[] { Passport, Circumstances, DocumentsRequired }
+		};
 
-        public static readonly Response ConfirmRegisterForPassport = new Response()
-        {
-            Content = "Підтвердити реєстрацію можна трьома способами:" +
-                      " за допомогою смс-повідомлення, електронного листа або " +
-                      "талона про реєстрацію, який можна роздрукувати чи сфотографувати." +
-                      " Якщо Ви не мали можливості розрукувати/сфотографувати талон," +
-                      " не отримали смс чи електронного листа з підтвердженням," +
-                      " але загалом бачили посилання на роздрук талона," +
-                      " в такому випадку Ви можете звернутися в Центр надання адміністративних послуг м. Львова," +
-                      " в який записувалися, і в день реєстрації адміністратор зможе ідентифікувати Вас за прізвищем." +
-                      " Також працівники територіальних підрозділів" +
-                      " ЦНАП м. Львова  можуть зателефонувати до Вас з метою підтвердження реєстрації на ту чи іншу дату.",
-            id = nameof(ConfirmRegisterForPassport),
-            Intents = new[] { Confirm, Register /*, UkrainianPassport, ForeignPassport*/}
-        };
+		public static readonly Response PassportChangeCircumstanses = new Response()
+		{
+			Content = "* Паспорт громадянина України, що підлягає обміну;\r\n" +
+					  "* Документи, що підтверджують обставини, у зв’язку з якими паспорт підлягає обміну (крім випадків коли строк дії паспорта закінчився);\r\n" +
+					  "* Квитанція про оплату адміністративного збору;\r\n" +
+					  "* Ідентифікаційний код (оригінал,копія);\r\n" +
+					  "* Свідоцтва про народження дітей/шлюб і розірвання шлюбу/ про зміну імені (за наявності);\r\n",
+			id = nameof(PassportChangeCircumstanses),
+			Intents = new[] { Passport, Circumstances }
+		};
 
-        public static readonly Response HowToRegister = new Response()
-        {
-            Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
-                      "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
-                      " далі категорію «Подати документи» та «Оформлення паспортів»." +
-                      " Якщо немає категорії «Оформлення паспортів», це означає, що" +
-                      " усі місця на подачу документів заповнені.\r\nВи можете звернутися" +
-                      " безпосередньо у територіальні підрозділ ЦНАП м. Львова за адресами:" +
-                      " вул. К. Левицького, 67, вул. М. Хвильового, 14а, вул. Ген. Чупринки, 85," +
-                      " І. Виговського, 32, пр. Червоної Калини, 72а, окрім суботи та понеділка, " +
-                      "оскільки в ці дні прийом громадян ведеться виключно за попереднім записом." +
-                      "\r\n\r\nЗверніть увагу! " +
-                      "Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення" +
-                      " паспорта громадянина України або оформлення паспорта громадянина України для виїзду " +
-                      "за кордон в становить 30 хв. Прийом та видачу документів із зазначеної послуги здійснює " +
-                      "адміністратор з прив’язкою до відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць" +
-                      " є обмеженою на подачу документів для оформлення паспорта громадянина України / " +
-                      "паспорта громадянина України для виїзду за кордон.\r\n",
-            id = nameof(HowToRegister),
-            Intents = new[] { Register }
-        };
+		public static readonly Response WhereCertificate13 = new Response()
+		{
+			Content =
+				"Довідку форми №13 про реєстрацію місця проживання можна оформити у будь – якому територіальному підрозділі ЦНАП м. Львова.",
+			id = nameof(WhereCertificate13),
+			Intents = new[] { Where, Certificate13 }
+		};
 
-        public static readonly Response HowToRegisterPassport = new Response()
-        {
-            Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
-                      "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
-                      " далі категорію «Подати документи» та «Оформлення паспортів»." +
-                      " Якщо немає категорії «Оформлення паспортів», це означає, що" +
-                      " усі місця на подачу документів заповнені.\r\nВи можете звернутися" +
-                      " безпосередньо у територіальні підрозділ ЦНАП м. Львова за адресами:" +
-                      " вул. К. Левицького, 67, вул. М. Хвильового, 14а, вул. Ген. Чупринки, 85," +
-                      " І. Виговського, 32, пр. Червоної Калини, 72а, окрім суботи та понеділка, " +
-                      "оскільки в ці дні прийом громадян ведеться виключно за попереднім записом." +
-                      "\r\n\r\nЗверніть увагу! " +
-                      "Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення" +
-                      " паспорта громадянина України або оформлення паспорта громадянина України для виїзду " +
-                      "за кордон в становить 30 хв. Прийом та видачу документів із зазначеної послуги здійснює " +
-                      "адміністратор з прив’язкою до відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць" +
-                      " є обмеженою на подачу документів для оформлення паспорта громадянина України / " +
-                      "паспорта громадянина України для виїзду за кордон.\r\n",
-            id = nameof(HowToRegisterPassport),
-            Intents = new[] { Register, Passport }
-        };
+		public static readonly Response DocumentsRequiredCertificate13 = new Response()
+		{
+			Content = "Для оформлення довідки форми № 13 потрібні:\r\n" +
+					  "* Паспорт громадянина України (оригінал,копія);\r\n" +
+					  "* Свідоцтво про народження дитини (для дітей які не досягли 14 років, оригінал і копія);\r\n" +
+					  "* Довідка форми № 2 про склад сім’ї/ будинкова книга;\r\n",
+			id = nameof(DocumentsRequiredCertificate13),
+			Intents = new[] { DocumentsRequired, Certificate13 }
+		};
 
-        public static readonly Response HowToRegisterPassportCnap = new Response()
-        {
-            Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
-                      "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
-                      " далі категорію «Подати документи» та «Оформлення паспортів»." +
-                      " Якщо немає категорії «Оформлення паспортів», це означає, що" +
-                      " усі місця на подачу документів заповнені.\r\nВи можете звернутися" +
-                      " безпосередньо у територіальні підрозділ ЦНАП м. Львова за адресами:" +
-                      " вул. К. Левицького, 67, вул. М. Хвильового, 14а, вул. Ген. Чупринки, 85," +
-                      " І. Виговського, 32, пр. Червоної Калини, 72а, окрім суботи та понеділка, " +
-                      "оскільки в ці дні прийом громадян ведеться виключно за попереднім записом." +
-                      "\r\n\r\nЗверніть увагу! " +
-                      "Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення" +
-                      " паспорта громадянина України або оформлення паспорта громадянина України для виїзду " +
-                      "за кордон в становить 30 хв. Прийом та видачу документів із зазначеної послуги здійснює " +
-                      "адміністратор з прив’язкою до відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць" +
-                      " є обмеженою на подачу документів для оформлення паспорта громадянина України / " +
-                      "паспорта громадянина України для виїзду за кордон.\r\n",
-            id = nameof(HowToRegisterPassportCnap),
-            Intents = new[] { Register, Passport, CNAP }
-        };
+		public static readonly Response ForeignPassportTimeKid = new Response()
+		{
+			Content = "20 робочих днів/ 7 робочих днів не враховуючи терміну доставки.\r\n",
+			id = nameof(ForeignPassportTimeKid),
+			Intents = new[] { Time, ForeignPassport, Kid12Years }
+		};
 
-        public static readonly Response HowToRegisterUkrainianPassport = new Response()
-        {
-            Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
-                      "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
-                      " далі категорію «Подати документи» та «Оформлення паспортів»." +
-                      " Якщо немає категорії «Оформлення паспортів», це означає, що" +
-                      " усі місця на подачу документів заповнені.\r\nВи можете звернутися" +
-                      " безпосередньо у територіальні підрозділ ЦНАП м. Львова за адресами:" +
-                      " вул. К. Левицького, 67, вул. М. Хвильового, 14а, вул. Ген. Чупринки, 85," +
-                      " І. Виговського, 32, пр. Червоної Калини, 72а, окрім суботи та понеділка, " +
-                      "оскільки в ці дні прийом громадян ведеться виключно за попереднім записом." +
-                      "\r\n\r\nЗверніть увагу! " +
-                      "Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення" +
-                      " паспорта громадянина України або оформлення паспорта громадянина України для виїзду " +
-                      "за кордон в становить 30 хв. Прийом та видачу документів із зазначеної послуги здійснює " +
-                      "адміністратор з прив’язкою до відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць" +
-                      " є обмеженою на подачу документів для оформлення паспорта громадянина України / " +
-                      "паспорта громадянина України для виїзду за кордон.\r\n",
-            id = nameof(HowToRegisterUkrainianPassport),
-            Intents = new[] { Register, UkrainianPassport }
-        };
+		public static readonly Response ForeignPassportTime = new Response()
+		{
+			Content = "20 робочих днів/ 7 робочих днів не враховуючи терміну доставки.\r\n",
+			id = nameof(ForeignPassportTime),
+			Intents = new[] { Time, ForeignPassport }
+		};
 
-        public static readonly Response HowToRegisterForeignPassport = new Response()
-        {
-            Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
-                      "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
-                      " далі категорію «Подати документи» та «Оформлення паспортів»." +
-                      " Якщо немає категорії «Оформлення паспортів», це означає, що" +
-                      " усі місця на подачу документів заповнені.\r\nВи можете звернутися" +
-                      " безпосередньо у територіальні підрозділ ЦНАП м. Львова за адресами:" +
-                      " вул. К. Левицького, 67, вул. М. Хвильового, 14а, вул. Ген. Чупринки, 85," +
-                      " І. Виговського, 32, пр. Червоної Калини, 72а, окрім суботи та понеділка, " +
-                      "оскільки в ці дні прийом громадян ведеться виключно за попереднім записом." +
-                      "\r\n\r\nЗверніть увагу! " +
-                      "Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення" +
-                      " паспорта громадянина України або оформлення паспорта громадянина України для виїзду " +
-                      "за кордон в становить 30 хв. Прийом та видачу документів із зазначеної послуги здійснює " +
-                      "адміністратор з прив’язкою до відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць" +
-                      " є обмеженою на подачу документів для оформлення паспорта громадянина України / " +
-                      "паспорта громадянина України для виїзду за кордон.\r\n",
-            id = nameof(HowToRegisterForeignPassport),
-            Intents = new[] { Register, ForeignPassport }
-        };
+		public static readonly Response PhotoCnap = new Response()
+		{
+			Content = "Так, фотографію для оформлення паспорта громадянина України/для виїзду" +
+					  " за кордон можна зробити у територіальних підрозділах " +
+					  "ЦНАП м. Львова для дорослих та дітей віком від 12 років.",
+			id = nameof(PhotoCnap),
+			Intents = new[] { Photo, CNAP }
+		};
 
-        public static readonly Response WhereToRegister = new Response()
-        {
-            Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
-                      "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
-                      " далі категорію «Подати документи» та «Оформлення паспортів»." +
-                      " Якщо немає категорії «Оформлення паспортів», це означає, що" +
-                      " усі місця на подачу документів заповнені.\r\nВи можете звернутися" +
-                      " безпосередньо у територіальні підрозділ ЦНАП м. Львова за адресами:" +
-                      " вул. К. Левицького, 67, вул. М. Хвильового, 14а, вул. Ген. Чупринки, 85," +
-                      " І. Виговського, 32, пр. Червоної Калини, 72а, окрім суботи та понеділка, " +
-                      "оскільки в ці дні прийом громадян ведеться виключно за попереднім записом." +
-                      "\r\n\r\nЗверніть увагу! " +
-                      "Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення" +
-                      " паспорта громадянина України або оформлення паспорта громадянина України для виїзду " +
-                      "за кордон в становить 30 хв. Прийом та видачу документів із зазначеної послуги здійснює " +
-                      "адміністратор з прив’язкою до відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць" +
-                      " є обмеженою на подачу документів для оформлення паспорта громадянина України / " +
-                      "паспорта громадянина України для виїзду за кордон.\r\n",
-            id = nameof(WhereToRegister),
-            Intents = new[] { Where, Register /*, UkrainianPassport, ForeignPassport*/}
-        };
+		public static readonly Response PhotoCnapUkrainianPassport = new Response()
+		{
+			Content = "Так, фотографію для оформлення паспорта громадянина України/для виїзду" +
+					  " за кордон можна зробити у територіальних підрозділах " +
+					  "ЦНАП м. Львова для дорослих та дітей віком від 12 років.",
+			id = nameof(PhotoCnapUkrainianPassport),
+			Intents = new[] { Photo, CNAP, UkrainianPassport }
+		};
 
-        public static readonly Response WhereToRegisterPassport = new Response()
-        {
-            Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
-                      "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
-                      " далі категорію «Подати документи» та «Оформлення паспортів»." +
-                      " Якщо немає категорії «Оформлення паспортів», це означає, що" +
-                      " усі місця на подачу документів заповнені.\r\nВи можете звернутися" +
-                      " безпосередньо у територіальні підрозділ ЦНАП м. Львова за адресами:" +
-                      " вул. К. Левицького, 67, вул. М. Хвильового, 14а, вул. Ген. Чупринки, 85," +
-                      " І. Виговського, 32, пр. Червоної Калини, 72а, окрім суботи та понеділка, " +
-                      "оскільки в ці дні прийом громадян ведеться виключно за попереднім записом." +
-                      "\r\n\r\nЗверніть увагу! " +
-                      "Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення" +
-                      " паспорта громадянина України або оформлення паспорта громадянина України для виїзду " +
-                      "за кордон в становить 30 хв. Прийом та видачу документів із зазначеної послуги здійснює " +
-                      "адміністратор з прив’язкою до відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць" +
-                      " є обмеженою на подачу документів для оформлення паспорта громадянина України / " +
-                      "паспорта громадянина України для виїзду за кордон.\r\n",
-            id = nameof(WhereToRegisterPassport),
-            Intents = new[] { Where, Register, Passport /* UkrainianPassport, ForeignPassport*/}
-        };
+		public static readonly Response PhotoCnapForeignPassport = new Response()
+		{
+			Content = "Так, фотографію для оформлення паспорта громадянина України/для виїзду" +
+					  " за кордон можна зробити у територіальних підрозділах " +
+					  "ЦНАП м. Львова для дорослих та дітей віком від 12 років.",
+			id = nameof(PhotoCnapForeignPassport),
+			Intents = new[] { Photo, CNAP, ForeignPassport }
+		};
 
-        public static readonly Response RegisterCnap = new Response()
-        {
-            Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
-                      "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
-                      " далі категорію «Подати документи» та «Оформлення паспортів»." +
-                      " Якщо немає категорії «Оформлення паспортів», це означає, що" +
-                      " усі місця на подачу документів заповнені.\r\nВи можете звернутися" +
-                      " безпосередньо у територіальні підрозділ ЦНАП м. Львова за адресами:" +
-                      " вул. К. Левицького, 67, вул. М. Хвильового, 14а, вул. Ген. Чупринки, 85," +
-                      " І. Виговського, 32, пр. Червоної Калини, 72а, окрім суботи та понеділка, " +
-                      "оскільки в ці дні прийом громадян ведеться виключно за попереднім записом." +
-                      "\r\n\r\nЗверніть увагу! " +
-                      "Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення" +
-                      " паспорта громадянина України або оформлення паспорта громадянина України для виїзду " +
-                      "за кордон в становить 30 хв. Прийом та видачу документів із зазначеної послуги здійснює " +
-                      "адміністратор з прив’язкою до відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць" +
-                      " є обмеженою на подачу документів для оформлення паспорта громадянина України / " +
-                      "паспорта громадянина України для виїзду за кордон.\r\n",
-            id = nameof(RegisterCnap),
-            Intents = new[] { Register, CNAP /*, UkrainianPassport, ForeignPassport*/}
-        };
+		public static readonly Response WhereGiveDocumentsUkrainianPassport = new Response()
+		{
+			Content = "Подати документи для оформлення паспорта громадянина України можна у " +
+					  "будь – якому територіальному підрозділі ЦНАП м. Львова," +
+					  " крім територіального підрозділу за адресою площа Ринок ,1 (бічний вхід).",
+			id = nameof(WhereGiveDocumentsUkrainianPassport),
+			Intents = new[] { Where, GivingDocuments, CNAP, UkrainianPassport }
+		};
 
-        public static readonly Response RequisitesPassport = new Response()
-        {
-            Content = "Будь ласка, вкажіть у своєму наступному повідомленні, реквізити для якого саме паспорта вас цікавлять?",
-            id = nameof(RequisitesPassport),
-            Intents = new[] { Requisites, Passport }
-        };
-        public static readonly Response RequisitesForeignPassport = new Response()
-        {
-            Content = "УВАГА! Оплачуючи рахунки уважно перевіряйте реквізити та обирайте той код територіального підрозділу," +
-                      " куди плануєте подавати документи для " +
-                      "оформлення паспорта громадянина України для виїзду за кордон.\r\n" +
-                      "Одержувач: ГУДМС України у Львівській області\r\n" +
-                      "Банк одержувача: Державна казначейська служба України м. Київ\r\n" +
-                      "Рахунок №37110056079807;\r\nКод ЄДРПОУ:37831493;\r\nМФО банку:820172;\r\n\r\n" +
-                      "* Код територіального підрозділу ЦНАПу на вул. Левицького, 67: 4614\r\n\r\n" +
-                      "* Код територіального підрозділу ЦНАПу на вул. Виговського, 32: 4610\r\n\r\n" +
-                      "* Код територіального підрозділу ЦНАПу на вул. Хвильового, 14а: 4615\r\n\r\n" +
-                      "* Код територіального підрозділу ЦНАПу на пр. Червоної Калини, 72а: 4612\r\n\r\n" +
-                      "* Код територіального підрозділу ЦНАПу на вул Ген. Чупринки, 85: 4613\r\n\r\n" +
-                      "* Код послуги: 548814 (у термін 20 р.д); - 557,32грн.\r\n\r\n" +
-                      "* Код послуги: 548815 (у термін 7 р.д). - 810,32грн\r\n\r\n",
-            id = nameof(RequisitesForeignPassport),
-            Intents = new[] { Requisites, ForeignPassport }
-        };
+		public static readonly Response WhereGiveDocumentsForeignPassport = new Response()
+		{
+			Content = "Для оформлення паспорта громадянина України для виїзду за кордон Ви можете звернутись " +
+					  "у територіальні підрозділ ЦНАП м. Львова за адресами:" +
+					  " вул. К. Левицького, 67, вул. М. Хвильового, 14а," +
+					  " вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а.",
+			id = nameof(WhereGiveDocumentsForeignPassport),
+			Intents = new[] { Where, GivingDocuments, ForeignPassport }
+		};
 
-        public static readonly Response RequisitesUkrainianPassport = new Response()
-        {
-            Content = "УВАГА! У разі обміну паспорта громадянина України у зв’язку із зміною прізвища при оплаті" +
-                      " за адміністративну послугу особі необхідно вказувати  нове прізвище." +
-                      "\r\n\r\nПослуга надається виключно згідно місця реєстрації. Уважно обирайте рахунок." +
-                      "\r\n\r\nТериторіальний підрозділ ЦНАПу на вул. Виговського, 32\r\n\r\n" +
-                      "Оплата адміністративного збору за оформлення та видачу паспорта громадянина України:" +
-                      "\r\n\r\nОдержувач: ГУДМС України у Львівській області\r\n\r\n" +
-                      "Банк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
-                      "Рахунок №37110056079807;\r\n\r\n" +
-                      "Код ЄДРПОУ:37831493 ;\r\n\r\n" +
-                      "МФО банку: 820172\r\n\r\n" +
-                      "Код підрозділу:4610\r\n\r\n" +
-                      "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
-                      "Код послуги: 660014 (у термін 7 р.д).\r\n\r\n" +
-                      "Територіальний підрозділ ЦНАПу на вул. Левицького, 67\r\n\r\n" +
-                      "Оплата адміністративного збору  за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
-                      "Одержувач: ГУДМС України у Львівській області\r\nБанк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
-                      "Рахунок № 37110056079807;\r\n\r\n" +
-                      "Код ЄДРПОУ:37831493 ;\r\n\r\n" +
-                      "МФО банку:820172\r\n\r\n" +
-                      "Код підрозділу:4614\r\n\r\n" +
-                      "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
-                      "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n" +
-                      "Територіальний підрозділ ЦНАПу на пр.. Червоної Калини, 72а\r\n\r\n" +
-                      "Оплата адміністративного збору за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
-                      "Одержувач: ГУДМС України у Львівській області\r\nБанк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
-                      "Рахунок №37110056079807;\r\n\r\n" +
-                      "Код ЄДРПОУ:37831493 ;\r\n\r\n" +
-                      "МФО банку:820172\r\n\r\n" +
-                      "Код підрозділу:4612\r\n\r\n" +
-                      "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
-                      "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n" +
-                      "Територіальний підрозділ ЦНАПу на вул. Хвильового, 14а\r\n\r\n" +
-                      "Оплата адміністративного збору  за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
-                      "Одержувач: ГУДМС у Львівськійобласті\r\n\r\n" +
-                      "Банк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
-                      "Рахунок №37110056079807;\r\n\r\nКод ЄДРПОУ:37831493 ;\r\n\r\n" +
-                      "МФО банку:820172\r\n\r\nКод підрозділу:4615\r\n\r\n" +
-                      "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
-                      "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n" +
-                      "Територіальний підрозділ ЦНАПу на вул. Ген. Чупринки, 85\r\n\r\n" +
-                      "Оплата адміністративного збору  за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
-                      "Одержувач: ГУДМС у Львівській області\r\n\r\n" +
-                      "Банк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
-                      "Рахунок № 37110056079807\r\n\r\n" +
-                      "Код ЄДРПОУ:37831493;\r\n\r\n" +
-                      "МФО банку:820172\r\n\r\n" +
-                      "Код підрозділу:4613\r\n\r\n" +
-                      "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
-                      "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n",
-            id = nameof(RequisitesUkrainianPassport),
-            Intents = new[] { Requisites, UkrainianPassport }
-        };
 
-        public static readonly Response WherePassportNotCnap = new Response()
-        {
-            Content = "Для оформлення паспорта громадянина України / " +
-                      "для виїзду за кордон можна звертатися у " +
-                      "територіальні підрозділи ЦНАП м. Львова" +
-                      " або районні відділи ДМС.\r\nЗверніть увагу!" +
-                      " Паспорт громадянина України виготовляється виключно за місцем реєстрації.\r\n",
-            id = nameof(WherePassportNotCnap),
-            Intents = new[] { Where, Passport, Not, CNAP }
-        };
+		public static readonly Response ConfirmRegisterForPassport = new Response()
+		{
+			Content = "Підтвердити реєстрацію можна трьома способами:" +
+					  " за допомогою смс-повідомлення, електронного листа або " +
+					  "талона про реєстрацію, який можна роздрукувати чи сфотографувати." +
+					  " Якщо Ви не мали можливості розрукувати/сфотографувати талон," +
+					  " не отримали смс чи електронного листа з підтвердженням," +
+					  " але загалом бачили посилання на роздрук талона," +
+					  " в такому випадку Ви можете звернутися в Центр надання адміністративних послуг м. Львова," +
+					  " в який записувалися, і в день реєстрації адміністратор зможе ідентифікувати Вас за прізвищем." +
+					  " Також працівники територіальних підрозділів" +
+					  " ЦНАП м. Львова  можуть зателефонувати до Вас з метою підтвердження реєстрації на ту чи іншу дату.",
+			id = nameof(ConfirmRegisterForPassport),
+			Intents = new[] { Confirm, Register /*, UkrainianPassport, ForeignPassport*/}
+		};
 
-        public static readonly Response WhereUkrainianPassportNotCnap = new Response()
-        {
-            Content = "Для оформлення паспорта громадянина України / " +
-                      "для виїзду за кордон можна звертатися у " +
-                      "територіальні підрозділи ЦНАП м. Львова" +
-                      " або районні відділи ДМС.\r\nЗверніть увагу!" +
-                      " Паспорт громадянина України виготовляється виключно за місцем реєстрації.\r\n",
-            id = nameof(WhereUkrainianPassportNotCnap),
-            Intents = new[] { Where, UkrainianPassport, Not, CNAP }
-        };
+		public static readonly Response HowToRegister = new Response()
+		{
+			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
+					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
+					  " далі категорію «Подати документи» та вид необхідної послуги.\r\n" +
+					  "Ви можете звернутися безпосередньо у територіальні підрозділ ЦНАП" +
+					  " м. Львова за адресами: вул. К. Левицького, 67, вул. М. Хвильового, 14а, " +
+					  "вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а," +
+					  " окрім суботи та понеділка, оскільки в ці дні прийом громадян ведеться виключно за попереднім записом.\r\n\r\n" +
+					  "Зверніть увагу! Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення паспорта громадянина України" +
+					  " або оформлення паспорта громадянина України для виїзду за кордон в становить 30 хв." +
+					  " Прийом та видачу документів із зазначеної послуги здійснює адміністратор з прив’язкою до " +
+					  "відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць є обмеженою на подачу документів" +
+					  " для оформлення паспорта громадянина України / паспорта громадянина України для виїзду за кордон.\r\n",
+			id = nameof(HowToRegister),
+			Intents = new[] { Register }
+		};
 
-        public static readonly Response WhereForeignPassportNotCnap = new Response()
-        {
-            Content = "Для оформлення паспорта громадянина України / " +
-                      "для виїзду за кордон можна звертатися у " +
-                      "територіальні підрозділи ЦНАП м. Львова" +
-                      " або районні відділи ДМС.\r\nЗверніть увагу!" +
-                      " Паспорт громадянина України виготовляється виключно за місцем реєстрації.\r\n",
-            id = nameof(WhereForeignPassportNotCnap),
-            Intents = new[] { Where, ForeignPassport, Not, CNAP }
-        };
+		public static readonly Response HowToRegisterPassport = new Response()
+		{
+			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
+					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
+					  " далі категорію «Подати документи» та вид необхідної послуги.\r\n" +
+					  "Ви можете звернутися безпосередньо у територіальні підрозділ ЦНАП" +
+					  " м. Львова за адресами: вул. К. Левицького, 67, вул. М. Хвильового, 14а, " +
+					  "вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а," +
+					  " окрім суботи та понеділка, оскільки в ці дні прийом громадян ведеться виключно за попереднім записом.\r\n\r\n" +
+					  "Зверніть увагу! Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення паспорта громадянина України" +
+					  " або оформлення паспорта громадянина України для виїзду за кордон в становить 30 хв." +
+					  " Прийом та видачу документів із зазначеної послуги здійснює адміністратор з прив’язкою до " +
+					  "відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць є обмеженою на подачу документів" +
+					  " для оформлення паспорта громадянина України / паспорта громадянина України для виїзду за кордон.\r\n",
+			id = nameof(HowToRegisterPassport),
+			Intents = new[] { Register, Passport }
+		};
 
-        public static readonly Response StartResponse = new Response()
-        {
-            Content =
-                "Привіт, я чат-бот від львівського ЦНАП'у. Поки в мене можна запитати про оформлення українського або закордонного паспорту, але дуже скоро я знатиму дуже багато!",
-            id = nameof(StartResponse),
-            Intents = new[] { Start }
-        };
-    }
+		public static readonly Response HowToRegisterCnap = new Response()
+		{
+			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
+					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
+					  " далі категорію «Подати документи» та вид необхідної послуги.\r\n" +
+					  "Ви можете звернутися безпосередньо у територіальні підрозділ ЦНАП" +
+					  " м. Львова за адресами: вул. К. Левицького, 67, вул. М. Хвильового, 14а, " +
+					  "вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а," +
+					  " окрім суботи та понеділка, оскільки в ці дні прийом громадян ведеться виключно за попереднім записом.\r\n\r\n" +
+					  "Зверніть увагу! Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення паспорта громадянина України" +
+					  " або оформлення паспорта громадянина України для виїзду за кордон в становить 30 хв." +
+					  " Прийом та видачу документів із зазначеної послуги здійснює адміністратор з прив’язкою до " +
+					  "відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць є обмеженою на подачу документів" +
+					  " для оформлення паспорта громадянина України / паспорта громадянина України для виїзду за кордон.\r\n",
+			id = nameof(HowToRegisterCnap),
+			Intents = new[] { Register, CNAP }
+		};
+		public static readonly Response HowToRegisterPassportCnap = new Response()
+		{
+			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
+					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
+					  " далі категорію «Подати документи» та вид необхідної послуги.\r\n" +
+					  "Ви можете звернутися безпосередньо у територіальні підрозділ ЦНАП" +
+					  " м. Львова за адресами: вул. К. Левицького, 67, вул. М. Хвильового, 14а, " +
+					  "вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а," +
+					  " окрім суботи та понеділка, оскільки в ці дні прийом громадян ведеться виключно за попереднім записом.\r\n\r\n" +
+					  "Зверніть увагу! Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення паспорта громадянина України" +
+					  " або оформлення паспорта громадянина України для виїзду за кордон в становить 30 хв." +
+					  " Прийом та видачу документів із зазначеної послуги здійснює адміністратор з прив’язкою до " +
+					  "відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць є обмеженою на подачу документів" +
+					  " для оформлення паспорта громадянина України / паспорта громадянина України для виїзду за кордон.\r\n",
+			id = nameof(HowToRegisterPassportCnap),
+			Intents = new[] { Register, Passport, CNAP }
+		};
+
+		public static readonly Response HowToRegisterUkrainianPassport = new Response()
+		{
+			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
+					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
+					  " далі категорію «Подати документи» та вид необхідної послуги.\r\n" +
+					  "Ви можете звернутися безпосередньо у територіальні підрозділ ЦНАП" +
+					  " м. Львова за адресами: вул. К. Левицького, 67, вул. М. Хвильового, 14а, " +
+					  "вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а," +
+					  " окрім суботи та понеділка, оскільки в ці дні прийом громадян ведеться виключно за попереднім записом.\r\n\r\n" +
+					  "Зверніть увагу! Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення паспорта громадянина України" +
+					  " або оформлення паспорта громадянина України для виїзду за кордон в становить 30 хв." +
+					  " Прийом та видачу документів із зазначеної послуги здійснює адміністратор з прив’язкою до " +
+					  "відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць є обмеженою на подачу документів" +
+					  " для оформлення паспорта громадянина України / паспорта громадянина України для виїзду за кордон.\r\n",
+			id = nameof(HowToRegisterUkrainianPassport),
+			Intents = new[] { Register, UkrainianPassport }
+		};
+
+		public static readonly Response HowToRegisterForeignPassport = new Response()
+		{
+			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
+					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
+					  " далі категорію «Подати документи» та вид необхідної послуги.\r\n" +
+					  "Ви можете звернутися безпосередньо у територіальні підрозділ ЦНАП" +
+					  " м. Львова за адресами: вул. К. Левицького, 67, вул. М. Хвильового, 14а, " +
+					  "вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а," +
+					  " окрім суботи та понеділка, оскільки в ці дні прийом громадян ведеться виключно за попереднім записом.\r\n\r\n" +
+					  "Зверніть увагу! Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення паспорта громадянина України" +
+					  " або оформлення паспорта громадянина України для виїзду за кордон в становить 30 хв." +
+					  " Прийом та видачу документів із зазначеної послуги здійснює адміністратор з прив’язкою до " +
+					  "відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць є обмеженою на подачу документів" +
+					  " для оформлення паспорта громадянина України / паспорта громадянина України для виїзду за кордон.\r\n",
+			id = nameof(HowToRegisterForeignPassport),
+			Intents = new[] { Register, ForeignPassport }
+		};
+
+		public static readonly Response WhereToRegister = new Response()
+		{
+			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
+					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
+					  " далі категорію «Подати документи» та вид необхідної послуги.\r\n" +
+					  "Ви можете звернутися безпосередньо у територіальні підрозділ ЦНАП" +
+					  " м. Львова за адресами: вул. К. Левицького, 67, вул. М. Хвильового, 14а, " +
+					  "вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а," +
+					  " окрім суботи та понеділка, оскільки в ці дні прийом громадян ведеться виключно за попереднім записом.\r\n\r\n" +
+					  "Зверніть увагу! Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення паспорта громадянина України" +
+					  " або оформлення паспорта громадянина України для виїзду за кордон в становить 30 хв." +
+					  " Прийом та видачу документів із зазначеної послуги здійснює адміністратор з прив’язкою до " +
+					  "відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць є обмеженою на подачу документів" +
+					  " для оформлення паспорта громадянина України / паспорта громадянина України для виїзду за кордон.\r\n",
+			id = nameof(WhereToRegister),
+			Intents = new[] { Where, Register /*, UkrainianPassport, ForeignPassport*/}
+		};
+
+		public static readonly Response WhereToRegisterPassport = new Response()
+		{
+			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
+					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
+					  " далі категорію «Подати документи» та вид необхідної послуги.\r\n" +
+					  "Ви можете звернутися безпосередньо у територіальні підрозділ ЦНАП" +
+					  " м. Львова за адресами: вул. К. Левицького, 67, вул. М. Хвильового, 14а, " +
+					  "вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а," +
+					  " окрім суботи та понеділка, оскільки в ці дні прийом громадян ведеться виключно за попереднім записом.\r\n\r\n" +
+					  "Зверніть увагу! Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення паспорта громадянина України" +
+					  " або оформлення паспорта громадянина України для виїзду за кордон в становить 30 хв." +
+					  " Прийом та видачу документів із зазначеної послуги здійснює адміністратор з прив’язкою до " +
+					  "відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць є обмеженою на подачу документів" +
+					  " для оформлення паспорта громадянина України / паспорта громадянина України для виїзду за кордон.\r\n",
+			id = nameof(WhereToRegisterPassport),
+			Intents = new[] { Where, Register, Passport }
+		};
+
+		public static readonly Response WhereToRegisterUkrainianPassport = new Response()
+		{
+			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
+					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
+					  " далі категорію «Подати документи» та вид необхідної послуги.\r\n" +
+					  "Ви можете звернутися безпосередньо у територіальні підрозділ ЦНАП" +
+					  " м. Львова за адресами: вул. К. Левицького, 67, вул. М. Хвильового, 14а, " +
+					  "вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а," +
+					  " окрім суботи та понеділка, оскільки в ці дні прийом громадян ведеться виключно за попереднім записом.\r\n\r\n" +
+					  "Зверніть увагу! Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення паспорта громадянина України" +
+					  " або оформлення паспорта громадянина України для виїзду за кордон в становить 30 хв." +
+					  " Прийом та видачу документів із зазначеної послуги здійснює адміністратор з прив’язкою до " +
+					  "відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць є обмеженою на подачу документів" +
+					  " для оформлення паспорта громадянина України / паспорта громадянина України для виїзду за кордон.\r\n",
+			id = nameof(WhereToRegisterUkrainianPassport),
+			Intents = new[] { Where, Register, UkrainianPassport }
+		};
+		public static readonly Response WhereToRegisterForeignPassport = new Response()
+		{
+			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
+					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
+					  " далі категорію «Подати документи» та вид необхідної послуги.\r\n" +
+					  "Ви можете звернутися безпосередньо у територіальні підрозділ ЦНАП" +
+					  " м. Львова за адресами: вул. К. Левицького, 67, вул. М. Хвильового, 14а, " +
+					  "вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а," +
+					  " окрім суботи та понеділка, оскільки в ці дні прийом громадян ведеться виключно за попереднім записом.\r\n\r\n" +
+					  "Зверніть увагу! Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення паспорта громадянина України" +
+					  " або оформлення паспорта громадянина України для виїзду за кордон в становить 30 хв." +
+					  " Прийом та видачу документів із зазначеної послуги здійснює адміністратор з прив’язкою до " +
+					  "відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць є обмеженою на подачу документів" +
+					  " для оформлення паспорта громадянина України / паспорта громадянина України для виїзду за кордон.\r\n",
+			id = nameof(WhereToRegisterForeignPassport),
+			Intents = new[] { Where, Register, ForeignPassport }
+		};
+
+		public static readonly Response RegisterCnap = new Response()
+		{
+			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
+					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
+					  " далі категорію «Подати документи» та вид необхідної послуги.\r\n" +
+					  "Ви можете звернутися безпосередньо у територіальні підрозділ ЦНАП" +
+					  " м. Львова за адресами: вул. К. Левицького, 67, вул. М. Хвильового, 14а, " +
+					  "вул. Ген. Чупринки, 85, І. Виговського, 32, пр. Червоної Калини, 72а," +
+					  " окрім суботи та понеділка, оскільки в ці дні прийом громадян ведеться виключно за попереднім записом.\r\n\r\n" +
+					  "Зверніть увагу! Визначено, що середній час обслуговування однієї особи з послуги щодо оформлення паспорта громадянина України" +
+					  " або оформлення паспорта громадянина України для виїзду за кордон в становить 30 хв." +
+					  " Прийом та видачу документів із зазначеної послуги здійснює адміністратор з прив’язкою до " +
+					  "відповідно облаштованого робочого місця. У зв\'язку з цим кількість місць є обмеженою на подачу документів" +
+					  " для оформлення паспорта громадянина України / паспорта громадянина України для виїзду за кордон.\r\n",
+			id = nameof(RegisterCnap),
+			Intents = new[] { Register, CNAP /*, UkrainianPassport, ForeignPassport*/}
+		};
+
+		public static readonly Response RequisitesPassport = new Response()
+		{
+			Content = "Будь ласка, вкажіть у своєму наступному повідомленні, реквізити для якого саме паспорта вас цікавлять?",
+			id = nameof(RequisitesPassport),
+			Intents = new[] { Requisites, Passport }
+		};
+		public static readonly Response WhereRequisitesPassport = new Response()
+		{
+			Content = "Будь ласка, вкажіть у своєму наступному повідомленні, реквізити для якого саме паспорта вас цікавлять?",
+			id = nameof(WhereRequisitesPassport),
+			Intents = new[] { Where, Requisites, Passport }
+		};
+		public static readonly Response RequisitesForeignPassport = new Response()
+		{
+			Content = "УВАГА! Оплачуючи рахунки уважно перевіряйте реквізити та обирайте той код територіального підрозділу," +
+					  " куди плануєте подавати документи для " +
+					  "оформлення паспорта громадянина України для виїзду за кордон.\r\n" +
+					  "Одержувач: ГУДМС України у Львівській області\r\n" +
+					  "Банк одержувача: Державна казначейська служба України м. Київ\r\n" +
+					  "Рахунок №37110056079807;\r\nКод ЄДРПОУ:37831493;\r\nМФО банку:820172;\r\n\r\n" +
+					  "* Код територіального підрозділу ЦНАПу на вул. Левицького, 67: 4614\r\n\r\n" +
+					  "* Код територіального підрозділу ЦНАПу на вул. Виговського, 32: 4610\r\n\r\n" +
+					  "* Код територіального підрозділу ЦНАПу на вул. Хвильового, 14а: 4615\r\n\r\n" +
+					  "* Код територіального підрозділу ЦНАПу на пр. Червоної Калини, 72а: 4612\r\n\r\n" +
+					  "* Код територіального підрозділу ЦНАПу на вул Ген. Чупринки, 85: 4613\r\n\r\n" +
+					  "* Код послуги: 548814 (у термін 20 р.д); - 557,32грн.\r\n\r\n" +
+					  "* Код послуги: 548815 (у термін 7 р.д). - 810,32грн\r\n\r\n",
+			id = nameof(RequisitesForeignPassport),
+			Intents = new[] { Requisites, ForeignPassport }
+		};
+
+		public static readonly Response WhereRequisitesForeignPassport = new Response()
+		{
+			Content = "УВАГА! Оплачуючи рахунки уважно перевіряйте реквізити та обирайте той код територіального підрозділу," +
+					  " куди плануєте подавати документи для " +
+					  "оформлення паспорта громадянина України для виїзду за кордон.\r\n" +
+					  "Одержувач: ГУДМС України у Львівській області\r\n" +
+					  "Банк одержувача: Державна казначейська служба України м. Київ\r\n" +
+					  "Рахунок №37110056079807;\r\nКод ЄДРПОУ:37831493;\r\nМФО банку:820172;\r\n\r\n" +
+					  "* Код територіального підрозділу ЦНАПу на вул. Левицького, 67: 4614\r\n\r\n" +
+					  "* Код територіального підрозділу ЦНАПу на вул. Виговського, 32: 4610\r\n\r\n" +
+					  "* Код територіального підрозділу ЦНАПу на вул. Хвильового, 14а: 4615\r\n\r\n" +
+					  "* Код територіального підрозділу ЦНАПу на пр. Червоної Калини, 72а: 4612\r\n\r\n" +
+					  "* Код територіального підрозділу ЦНАПу на вул Ген. Чупринки, 85: 4613\r\n\r\n" +
+					  "* Код послуги: 548814 (у термін 20 р.д); - 557,32грн.\r\n\r\n" +
+					  "* Код послуги: 548815 (у термін 7 р.д). - 810,32грн\r\n\r\n",
+			id = nameof(WhereRequisitesForeignPassport),
+			Intents = new[] { Where, Requisites, ForeignPassport }
+		};
+
+		public static readonly Response RequisitesUkrainianPassport = new Response()
+		{
+			Content = "УВАГА! У разі обміну паспорта громадянина України у зв’язку із зміною прізвища при оплаті" +
+					  " за адміністративну послугу особі необхідно вказувати  нове прізвище." +
+					  "\r\n\r\nПослуга надається виключно згідно місця реєстрації. Уважно обирайте рахунок." +
+					  "\r\n\r\nТериторіальний підрозділ ЦНАПу на вул. Виговського, 32\r\n\r\n" +
+					  "Оплата адміністративного збору за оформлення та видачу паспорта громадянина України:" +
+					  "\r\n\r\nОдержувач: ГУДМС України у Львівській області\r\n\r\n" +
+					  "Банк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
+					  "Рахунок №37110056079807;\r\n\r\n" +
+					  "Код ЄДРПОУ:37831493 ;\r\n\r\n" +
+					  "МФО банку: 820172\r\n\r\n" +
+					  "Код підрозділу:4610\r\n\r\n" +
+					  "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
+					  "Код послуги: 660014 (у термін 7 р.д).\r\n\r\n" +
+					  "Територіальний підрозділ ЦНАПу на вул. Левицького, 67\r\n\r\n" +
+					  "Оплата адміністративного збору  за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
+					  "Одержувач: ГУДМС України у Львівській області\r\nБанк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
+					  "Рахунок № 37110056079807;\r\n\r\n" +
+					  "Код ЄДРПОУ:37831493 ;\r\n\r\n" +
+					  "МФО банку:820172\r\n\r\n" +
+					  "Код підрозділу:4614\r\n\r\n" +
+					  "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
+					  "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n" +
+					  "Територіальний підрозділ ЦНАПу на пр.. Червоної Калини, 72а\r\n\r\n" +
+					  "Оплата адміністративного збору за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
+					  "Одержувач: ГУДМС України у Львівській області\r\nБанк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
+					  "Рахунок №37110056079807;\r\n\r\n" +
+					  "Код ЄДРПОУ:37831493 ;\r\n\r\n" +
+					  "МФО банку:820172\r\n\r\n" +
+					  "Код підрозділу:4612\r\n\r\n" +
+					  "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
+					  "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n" +
+					  "Територіальний підрозділ ЦНАПу на вул. Хвильового, 14а\r\n\r\n" +
+					  "Оплата адміністративного збору  за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
+					  "Одержувач: ГУДМС у Львівськійобласті\r\n\r\n" +
+					  "Банк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
+					  "Рахунок №37110056079807;\r\n\r\nКод ЄДРПОУ:37831493 ;\r\n\r\n" +
+					  "МФО банку:820172\r\n\r\nКод підрозділу:4615\r\n\r\n" +
+					  "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
+					  "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n" +
+					  "Територіальний підрозділ ЦНАПу на вул. Ген. Чупринки, 85\r\n\r\n" +
+					  "Оплата адміністративного збору  за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
+					  "Одержувач: ГУДМС у Львівській області\r\n\r\n" +
+					  "Банк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
+					  "Рахунок № 37110056079807\r\n\r\n" +
+					  "Код ЄДРПОУ:37831493;\r\n\r\n" +
+					  "МФО банку:820172\r\n\r\n" +
+					  "Код підрозділу:4613\r\n\r\n" +
+					  "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
+					  "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n",
+			id = nameof(RequisitesUkrainianPassport),
+			Intents = new[] { Requisites, UkrainianPassport }
+		};
+		public static readonly Response WhereRequisitesUkrainianPassport = new Response()
+		{
+			Content = "УВАГА! У разі обміну паспорта громадянина України у зв’язку із зміною прізвища при оплаті" +
+					  " за адміністративну послугу особі необхідно вказувати  нове прізвище." +
+					  "\r\n\r\nПослуга надається виключно згідно місця реєстрації. Уважно обирайте рахунок." +
+					  "\r\n\r\nТериторіальний підрозділ ЦНАПу на вул. Виговського, 32\r\n\r\n" +
+					  "Оплата адміністративного збору за оформлення та видачу паспорта громадянина України:" +
+					  "\r\n\r\nОдержувач: ГУДМС України у Львівській області\r\n\r\n" +
+					  "Банк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
+					  "Рахунок №37110056079807;\r\n\r\n" +
+					  "Код ЄДРПОУ:37831493 ;\r\n\r\n" +
+					  "МФО банку: 820172\r\n\r\n" +
+					  "Код підрозділу:4610\r\n\r\n" +
+					  "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
+					  "Код послуги: 660014 (у термін 7 р.д).\r\n\r\n" +
+					  "Територіальний підрозділ ЦНАПу на вул. Левицького, 67\r\n\r\n" +
+					  "Оплата адміністративного збору  за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
+					  "Одержувач: ГУДМС України у Львівській області\r\nБанк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
+					  "Рахунок № 37110056079807;\r\n\r\n" +
+					  "Код ЄДРПОУ:37831493 ;\r\n\r\n" +
+					  "МФО банку:820172\r\n\r\n" +
+					  "Код підрозділу:4614\r\n\r\n" +
+					  "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
+					  "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n" +
+					  "Територіальний підрозділ ЦНАПу на пр.. Червоної Калини, 72а\r\n\r\n" +
+					  "Оплата адміністративного збору за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
+					  "Одержувач: ГУДМС України у Львівській області\r\nБанк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
+					  "Рахунок №37110056079807;\r\n\r\n" +
+					  "Код ЄДРПОУ:37831493 ;\r\n\r\n" +
+					  "МФО банку:820172\r\n\r\n" +
+					  "Код підрозділу:4612\r\n\r\n" +
+					  "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
+					  "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n" +
+					  "Територіальний підрозділ ЦНАПу на вул. Хвильового, 14а\r\n\r\n" +
+					  "Оплата адміністративного збору  за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
+					  "Одержувач: ГУДМС у Львівськійобласті\r\n\r\n" +
+					  "Банк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
+					  "Рахунок №37110056079807;\r\n\r\nКод ЄДРПОУ:37831493 ;\r\n\r\n" +
+					  "МФО банку:820172\r\n\r\nКод підрозділу:4615\r\n\r\n" +
+					  "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
+					  "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n" +
+					  "Територіальний підрозділ ЦНАПу на вул. Ген. Чупринки, 85\r\n\r\n" +
+					  "Оплата адміністративного збору  за оформлення та видачу паспорта громадянина України:\r\n\r\n" +
+					  "Одержувач: ГУДМС у Львівській області\r\n\r\n" +
+					  "Банк одержувача: Держказначейська служба України у м. Києві\r\n\r\n" +
+					  "Рахунок № 37110056079807\r\n\r\n" +
+					  "Код ЄДРПОУ:37831493;\r\n\r\n" +
+					  "МФО банку:820172\r\n\r\n" +
+					  "Код підрозділу:4613\r\n\r\n" +
+					  "Код послуги: 660013 (у термін 20 р.д)\r\n\r\n" +
+					  "Код послуги: 660014 (у термін 10 р.д)\r\n\r\n",
+			id = nameof(WhereRequisitesUkrainianPassport),
+			Intents = new[] { Where, Requisites, UkrainianPassport }
+		};
+
+		public static readonly Response WherePassportNotCnap = new Response()
+		{
+			Content = "Для оформлення паспорта громадянина України / " +
+					  "для виїзду за кордон можна звертатися у " +
+					  "територіальні підрозділи ЦНАП м. Львова" +
+					  " або районні відділи ДМС.\r\nЗверніть увагу!" +
+					  " Паспорт громадянина України виготовляється виключно за місцем реєстрації.\r\n",
+			id = nameof(WherePassportNotCnap),
+			Intents = new[] { Where, Passport, Not, CNAP }
+		};
+
+		public static readonly Response WhereUkrainianPassportNotCnap = new Response()
+		{
+			Content = "Для оформлення паспорта громадянина України / " +
+					  "для виїзду за кордон можна звертатися у " +
+					  "територіальні підрозділи ЦНАП м. Львова" +
+					  " або районні відділи ДМС.\r\nЗверніть увагу!" +
+					  " Паспорт громадянина України виготовляється виключно за місцем реєстрації.\r\n",
+			id = nameof(WhereUkrainianPassportNotCnap),
+			Intents = new[] { Where, UkrainianPassport, Not, CNAP }
+		};
+
+		public static readonly Response WhereForeignPassportNotCnap = new Response()
+		{
+			Content = "Для оформлення паспорта громадянина України / " +
+					  "для виїзду за кордон можна звертатися у " +
+					  "територіальні підрозділи ЦНАП м. Львова" +
+					  " або районні відділи ДМС.\r\nЗверніть увагу!" +
+					  " Паспорт громадянина України виготовляється виключно за місцем реєстрації.\r\n",
+			id = nameof(WhereForeignPassportNotCnap),
+			Intents = new[] { Where, ForeignPassport, Not, CNAP }
+		};
+
+		public static readonly Response StartResponse = new Response()
+		{
+			Content =
+				"Привіт, я чат-бот від львівського ЦНАП'у. Поки в мене можна запитати про оформлення українського або закордонного паспорту, але дуже скоро я знатиму дуже багато!",
+			id = nameof(StartResponse),
+			Intents = new[] { Start }
+		};
+	}
 
 
 }

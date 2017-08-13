@@ -11,6 +11,7 @@ namespace CnapLvivBot.Data.Infrastructure.Repository
 {
     public class DocumentDbRepository<T> : IRepository<T> where T : BaseEntity
     {
+
         protected List<T> List { get; set; }
         private DocumentClient _client;
 
@@ -38,7 +39,7 @@ namespace CnapLvivBot.Data.Infrastructure.Repository
         public async Task<bool> AnyAsync(string id) => List.Exists(x => x.id.Equals(id));
 
         public async Task<T> GetAsync(string id)
-        {
+        { 
             return List.FirstOrDefault(x => x.id.Equals(id));
         }
 
@@ -85,8 +86,8 @@ namespace CnapLvivBot.Data.Infrastructure.Repository
 
         #region Credentials from Web.config
 
-        private readonly string EndpointUrl = ConfigurationManager.AppSettings["EndpointUrl"];
-        private readonly string PrimaryKey = ConfigurationManager.AppSettings["PrimaryKey"];
+        private readonly string EndpointUrl =  ConfigurationManager.AppSettings["EndpointUrl"];
+        private readonly string PrimaryKey =   ConfigurationManager.AppSettings["PrimaryKey"];
         private readonly string DatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
 
         #endregion
