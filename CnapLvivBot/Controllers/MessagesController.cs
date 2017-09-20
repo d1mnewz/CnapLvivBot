@@ -20,7 +20,6 @@ namespace CnapLvivBot.Controllers
 				var connector = new ConnectorClient(new Uri(activity.ServiceUrl));
 
 				var reply = activity.CreateReply();
-
 				reply.Text = await new ReplyBuilder().BuildReply(
 					GetIntentsList(activity, AppSettings["WitClientKey"]));
 
