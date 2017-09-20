@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Reflection;
 using CnapLvivBot.Data.Entities;
 using static System.Reflection.BindingFlags;
 using static CnapLvivBot.Seeding.SeedValues.PreMadeIntents;
@@ -12,17 +10,13 @@ namespace CnapLvivBot.Seeding.SeedValues
 	[SuppressMessage("ReSharper", "ComplexConditionExpression")]
 	public static class PreMadeResponses
 	{
-		/// <exception cref="TargetException">In the .NET for Windows Store apps or the Portable Class Library, catch <see cref="T:System.Exception" /> instead.The field is non-static and <paramref name="obj" /> is null. </exception>
-		/// <exception cref="NotSupportedException">A field is marked literal, but the field does not have one of the accepted literal types. </exception>
-		/// <exception cref="FieldAccessException">In the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, <see cref="T:System.MemberAccessException" />, instead.The caller does not have permission to access this field. </exception>
-		/// <exception cref="ArgumentException">The method is neither declared nor inherited by the class of <paramref name="obj" />. </exception>
 		public static IEnumerable<Response> LoadResponses()
 		{
 			var type = typeof(PreMadeResponses);
 			return type.GetFields(Static | Public).Select(p => p.GetValue(null) as Response).ToList();
 		}
 
-		public static readonly Response PassportGeneralizedTime = new Response()
+		public static readonly Response PassportGeneralizedTime = new Response
 		{
 			Content = "Паспорт громадянина України\r\n" +
 					  "20 робочих днів    -  279 грн.;\r\n10 робочих днів    -  366 грн.;\r\n" +
@@ -38,7 +32,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Passport, Time }
 		};
 
-		public static readonly Response PassportGeneralizedPrice = new Response()
+		public static readonly Response PassportGeneralizedPrice = new Response
 		{
 			Content = "Паспорт громадянина України\r\n" +
 					  "20 робочих днів    -  279 грн.;\r\n10 робочих днів    -  366 грн.;\r\n" +
@@ -54,7 +48,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Passport, Price }
 		};
 
-		public static readonly Response WhereToPay = new Response()
+		public static readonly Response WhereToPay = new Response
 		{
 			Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
 					  "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
@@ -62,7 +56,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, Pay }
 		};
 
-		public static readonly Response WhereToPayForPassport = new Response()
+		public static readonly Response WhereToPayForPassport = new Response
 		{
 			Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
 					  "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
@@ -70,7 +64,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, Pay, Passport }
 		};
 
-		public static readonly Response WhereToPayForUkrainianPassport = new Response()
+		public static readonly Response WhereToPayForUkrainianPassport = new Response
 		{
 			Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
 					  "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
@@ -78,7 +72,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, Pay, UkrainianPassport }
 		};
 
-		public static readonly Response WhereToPayForForeignPassport = new Response()
+		public static readonly Response WhereToPayForForeignPassport = new Response
 		{
 			Content = "Оплатити адміністративний збір можна у будь-якому відділенні банку, " +
 					  "або безпосередньо у ЦНАПі за наявності банківської картки чи готівки.\r\n",
@@ -86,16 +80,14 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, Pay, ForeignPassport }
 		};
 
-		// TODO:
-		public static readonly Response WhereGetForeignPassport = new Response()
+		public static readonly Response WhereGetForeignPassport = new Response
 		{
 			Content = "Temponary, expecting text.",
 			id = nameof(WhereGetForeignPassport),
 			Intents = new[] { Where, Get, ForeignPassport }
 		};
 
-
-		public static readonly Response DocumentsForeignPassport = new Response()
+		public static readonly Response DocumentsForeignPassport = new Response
 		{
 			Content = "Для оформлення закордонного паспорту потрібні:\r\n" +
 					  "* Паспорт громадянина України;\r\n" +
@@ -106,7 +98,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { DocumentsRequired, ForeignPassport }
 		};
 
-		public static readonly Response DocumentsForeignPassportKid = new Response()
+		public static readonly Response DocumentsForeignPassportKid = new Response
 		{
 			Content = "Для оформлення паспорта громадянина України для дитини для виїзду за кордон потрібно:\r\n" +
 					  "* Свідоцтво про народження дитини (оригінал,копія);\r\n" +
@@ -118,7 +110,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { DocumentsRequired, ForeignPassport, Kid12Years }
 		};
 
-		public static readonly Response DocumentsForeignPassportCnap = new Response()
+		public static readonly Response DocumentsForeignPassportCnap = new Response
 		{
 			Content = "Так, документи на оформлення паспорта громадянина України для виїзду закордон " +
 					  "можна подати у будь – якому територіальному підрозділі ЦНАП м. Львова," +
@@ -127,7 +119,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { ForeignPassport, GivingDocuments, CNAP }
 		};
 
-		public static readonly Response PriceForeignPassport = new Response()
+		public static readonly Response PriceForeignPassport = new Response
 		{
 			Content = "Закордонний паспорт: 557,32 грн – 20 робочих днів термін виконання," +
 					  " 810,32 грн. – 7 робочих днів термін виконання;",
@@ -135,7 +127,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Price, ForeignPassport }
 		};
 
-		public static readonly Response PriceForeignPassportKid = new Response()
+		public static readonly Response PriceForeignPassportKid = new Response
 		{
 			Content = "Закордонний паспорт для дитини: 557,32 грн – 20 робочих днів термін виконання," +
 					  " 810,32 грн. – 7 робочих днів термін виконання;",
@@ -144,7 +136,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 		};
 
 
-		public static readonly Response PriceUkrainianPassportKid = new Response()
+		public static readonly Response PriceUkrainianPassportKid = new Response
 		{
 			Content = "Паспорт громадянина України з безконтактним електронним" +
 					  " носієм вперше після досягнення 14-річного віку є безкоштовним" +
@@ -153,7 +145,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Price, UkrainianPassport, Kid12Years }
 		};
 
-		public static readonly Response PriceUkrainianPassport = new Response()
+		public static readonly Response PriceUkrainianPassport = new Response
 		{
 			Content = @"Паспорт громадянина України\r\n\r\n20 робочих днів  -  279 грн.;" +
 					  @"\r\n10 робочих днів    -  366 грн.;\r\n\r\n" +
@@ -169,30 +161,29 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Price, UkrainianPassport }
 		};
 
-
-		public static readonly Response UkrainianPassportDocuments = new Response()
+		public static readonly Response UkrainianPassportDocuments = new Response
 		{
 			Content = "Оформлення і видача паспорта громадянина України з безконтактним електронним носієм " +
-			          "вперше після досягнення 14-річного віку:" +
-			          "\r\n*\tСвідоцтво про народження дитини (оригінал, копія);" +
-			          "\r\n*\tОригінали паспортів батьків;\r\n-\tІдентифікаційний код дитини (оригінал, копія);" +
-			          "\r\n*\tДовідка форми №13  про реєстрацію місця проживання;\r\n",
+					  "вперше після досягнення 14-річного віку:" +
+					  "\r\n*\tСвідоцтво про народження дитини (оригінал, копія);" +
+					  "\r\n*\tОригінали паспортів батьків;\r\n-\tІдентифікаційний код дитини (оригінал, копія);" +
+					  "\r\n*\tДовідка форми №13  про реєстрацію місця проживання;\r\n",
 			id = nameof(UkrainianPassport),
 			Intents = new[] { UkrainianPassport, DocumentsRequired }
 		};
 
-		public static readonly Response UkrainianPassportKidDocuments = new Response()
+		public static readonly Response UkrainianPassportKidDocuments = new Response
 		{
 			Content = "Оформлення і видача паспорта громадянина України з безконтактним електронним носієм " +
-			          "вперше після досягнення 14-річного віку:" +
-			          "\r\n*\tСвідоцтво про народження дитини (оригінал, копія);" +
-			          "\r\n*\tОригінали паспортів батьків;\r\n-\tІдентифікаційний код дитини (оригінал, копія);" +
-			          "\r\n*\tДовідка форми №13  про реєстрацію місця проживання;\r\n",
+					  "вперше після досягнення 14-річного віку:" +
+					  "\r\n*\tСвідоцтво про народження дитини (оригінал, копія);" +
+					  "\r\n*\tОригінали паспортів батьків;\r\n-\tІдентифікаційний код дитини (оригінал, копія);" +
+					  "\r\n*\tДовідка форми №13  про реєстрацію місця проживання;\r\n",
 			id = nameof(UkrainianPassportKidDocuments),
 			Intents = new[] { UkrainianPassport, DocumentsRequired, Kid12Years }
 		};
 
-		public static readonly Response UkrainianPassportChange = new Response()
+		public static readonly Response UkrainianPassportChange = new Response
 		{
 			Content = "* Паспорт громадянина України, що підлягає обміну;\r\n" +
 					  "* Документи, що підтверджують обставини, у зв’язку з якими паспорт підлягає обміну (крім випадків коли строк дії паспорта закінчився);\r\n" +
@@ -203,7 +194,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { UkrainianPassport, Circumstances }
 		};
 
-		public static readonly Response UkrainianPassportDocumentsToChange = new Response()
+		public static readonly Response UkrainianPassportDocumentsToChange = new Response
 		{
 			Content = "* Паспорт громадянина України, що підлягає обміну;\r\n" +
 					  "* Документи, що підтверджують обставини, у зв’язку з якими паспорт підлягає обміну (крім випадків коли строк дії паспорта закінчився);\r\n" +
@@ -214,8 +205,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { UkrainianPassport, Circumstances, DocumentsRequired }
 		};
 
-
-		public static readonly Response PassportDocumentsToChange = new Response()
+		public static readonly Response PassportDocumentsToChange = new Response
 		{
 			Content = "* Паспорт громадянина України, що підлягає обміну;\r\n" +
 					  "* Документи, що підтверджують обставини, у зв’язку з якими паспорт підлягає обміну (крім випадків коли строк дії паспорта закінчився);\r\n" +
@@ -226,7 +216,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Passport, Circumstances, DocumentsRequired }
 		};
 
-		public static readonly Response PassportChangeCircumstanses = new Response()
+		public static readonly Response PassportChangeCircumstanses = new Response
 		{
 			Content = "* Паспорт громадянина України, що підлягає обміну;\r\n" +
 					  "* Документи, що підтверджують обставини, у зв’язку з якими паспорт підлягає обміну (крім випадків коли строк дії паспорта закінчився);\r\n" +
@@ -237,7 +227,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Passport, Circumstances }
 		};
 
-		public static readonly Response WhereCertificate13 = new Response()
+		public static readonly Response WhereCertificate13 = new Response
 		{
 			Content =
 				"Довідку форми №13 про реєстрацію місця проживання можна оформити у будь – якому територіальному підрозділі ЦНАП м. Львова.",
@@ -245,7 +235,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, Certificate13 }
 		};
 
-		public static readonly Response DocumentsRequiredCertificate13 = new Response()
+		public static readonly Response DocumentsRequiredCertificate13 = new Response
 		{
 			Content = "Для оформлення довідки форми № 13 потрібні:\r\n" +
 					  "* Паспорт громадянина України (оригінал,копія);\r\n" +
@@ -255,21 +245,21 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { DocumentsRequired, Certificate13 }
 		};
 
-		public static readonly Response ForeignPassportTimeKid = new Response()
+		public static readonly Response ForeignPassportTimeKid = new Response
 		{
 			Content = "20 робочих днів/ 7 робочих днів не враховуючи терміну доставки.\r\n",
 			id = nameof(ForeignPassportTimeKid),
 			Intents = new[] { Time, ForeignPassport, Kid12Years }
 		};
 
-		public static readonly Response ForeignPassportTime = new Response()
+		public static readonly Response ForeignPassportTime = new Response
 		{
 			Content = "20 робочих днів/ 7 робочих днів не враховуючи терміну доставки.\r\n",
 			id = nameof(ForeignPassportTime),
 			Intents = new[] { Time, ForeignPassport }
 		};
 
-		public static readonly Response PhotoCnap = new Response()
+		public static readonly Response PhotoCnap = new Response
 		{
 			Content = "Так, фотографію для оформлення паспорта громадянина України/для виїзду" +
 					  " за кордон можна зробити у територіальних підрозділах " +
@@ -278,7 +268,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Photo, CNAP }
 		};
 
-		public static readonly Response PhotoCnapUkrainianPassport = new Response()
+		public static readonly Response PhotoCnapUkrainianPassport = new Response
 		{
 			Content = "Так, фотографію для оформлення паспорта громадянина України/для виїзду" +
 					  " за кордон можна зробити у територіальних підрозділах " +
@@ -287,7 +277,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Photo, CNAP, UkrainianPassport }
 		};
 
-		public static readonly Response PhotoCnapForeignPassport = new Response()
+		public static readonly Response PhotoCnapForeignPassport = new Response
 		{
 			Content = "Так, фотографію для оформлення паспорта громадянина України/для виїзду" +
 					  " за кордон можна зробити у територіальних підрозділах " +
@@ -296,7 +286,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Photo, CNAP, ForeignPassport }
 		};
 
-		public static readonly Response WhereGiveDocumentsUkrainianPassport = new Response()
+		public static readonly Response WhereGiveDocumentsUkrainianPassport = new Response
 		{
 			Content = "Подати документи для оформлення паспорта громадянина України можна у " +
 					  "будь – якому територіальному підрозділі ЦНАП м. Львова," +
@@ -305,7 +295,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, GivingDocuments, CNAP, UkrainianPassport }
 		};
 
-		public static readonly Response WhereGiveDocumentsForeignPassport = new Response()
+		public static readonly Response WhereGiveDocumentsForeignPassport = new Response
 		{
 			Content = "Для оформлення паспорта громадянина України для виїзду за кордон Ви можете звернутись " +
 					  "у територіальні підрозділ ЦНАП м. Львова за адресами:" +
@@ -315,8 +305,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, GivingDocuments, ForeignPassport }
 		};
 
-
-		public static readonly Response ConfirmRegisterForPassport = new Response()
+		public static readonly Response ConfirmRegisterForPassport = new Response
 		{
 			Content = "Підтвердити реєстрацію можна трьома способами:" +
 					  " за допомогою смс-повідомлення, електронного листа або " +
@@ -332,7 +321,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Confirm, Register /*, UkrainianPassport, ForeignPassport*/}
 		};
 
-		public static readonly Response HowToRegister = new Response()
+		public static readonly Response HowToRegister = new Response
 		{
 			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
 					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
@@ -350,7 +339,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Register }
 		};
 
-		public static readonly Response HowToRegisterPassport = new Response()
+		public static readonly Response HowToRegisterPassport = new Response
 		{
 			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
 					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
@@ -368,7 +357,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Register, Passport }
 		};
 
-		public static readonly Response HowToRegisterCnap = new Response()
+		public static readonly Response HowToRegisterCnap = new Response
 		{
 			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
 					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
@@ -385,7 +374,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			id = nameof(HowToRegisterCnap),
 			Intents = new[] { Register, CNAP }
 		};
-		public static readonly Response HowToRegisterPassportCnap = new Response()
+		public static readonly Response HowToRegisterPassportCnap = new Response
 		{
 			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
 					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
@@ -403,7 +392,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Register, Passport, CNAP }
 		};
 
-		public static readonly Response HowToRegisterUkrainianPassport = new Response()
+		public static readonly Response HowToRegisterUkrainianPassport = new Response
 		{
 			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
 					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
@@ -421,7 +410,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Register, UkrainianPassport }
 		};
 
-		public static readonly Response HowToRegisterForeignPassport = new Response()
+		public static readonly Response HowToRegisterForeignPassport = new Response
 		{
 			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
 					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
@@ -439,7 +428,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Register, ForeignPassport }
 		};
 
-		public static readonly Response WhereToRegister = new Response()
+		public static readonly Response WhereToRegister = new Response
 		{
 			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
 					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
@@ -457,7 +446,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, Register /*, UkrainianPassport, ForeignPassport*/}
 		};
 
-		public static readonly Response WhereToRegisterPassport = new Response()
+		public static readonly Response WhereToRegisterPassport = new Response
 		{
 			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
 					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
@@ -475,7 +464,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, Register, Passport }
 		};
 
-		public static readonly Response WhereToRegisterUkrainianPassport = new Response()
+		public static readonly Response WhereToRegisterUkrainianPassport = new Response
 		{
 			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
 					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
@@ -492,7 +481,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			id = nameof(WhereToRegisterUkrainianPassport),
 			Intents = new[] { Where, Register, UkrainianPassport }
 		};
-		public static readonly Response WhereToRegisterForeignPassport = new Response()
+		public static readonly Response WhereToRegisterForeignPassport = new Response
 		{
 			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
 					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
@@ -510,7 +499,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, Register, ForeignPassport }
 		};
 
-		public static readonly Response RegisterCnap = new Response()
+		public static readonly Response RegisterCnap = new Response
 		{
 			Content = "Запис на прийом у ЦНАП м. Львова здійснюється за посиланням: http://city-adm.lviv.ua/services/zapys-do-tsnap\r\n" +
 					  "Після заповнення аплікаційної форми оберіть ЦНАП, де будете подавати документи," +
@@ -528,19 +517,19 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Register, CNAP /*, UkrainianPassport, ForeignPassport*/}
 		};
 
-		public static readonly Response RequisitesPassport = new Response()
+		public static readonly Response RequisitesPassport = new Response
 		{
 			Content = "Будь ласка, вкажіть у своєму наступному повідомленні, реквізити для якого саме паспорта вас цікавлять?",
 			id = nameof(RequisitesPassport),
 			Intents = new[] { Requisites, Passport }
 		};
-		public static readonly Response WhereRequisitesPassport = new Response()
+		public static readonly Response WhereRequisitesPassport = new Response
 		{
 			Content = "Будь ласка, вкажіть у своєму наступному повідомленні, реквізити для якого саме паспорта вас цікавлять?",
 			id = nameof(WhereRequisitesPassport),
 			Intents = new[] { Where, Requisites, Passport }
 		};
-		public static readonly Response RequisitesForeignPassport = new Response()
+		public static readonly Response RequisitesForeignPassport = new Response
 		{
 			Content = "УВАГА! Оплачуючи рахунки уважно перевіряйте реквізити та обирайте той код територіального підрозділу," +
 					  " куди плануєте подавати документи для " +
@@ -559,7 +548,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Requisites, ForeignPassport }
 		};
 
-		public static readonly Response WhereRequisitesForeignPassport = new Response()
+		public static readonly Response WhereRequisitesForeignPassport = new Response
 		{
 			Content = "УВАГА! Оплачуючи рахунки уважно перевіряйте реквізити та обирайте той код територіального підрозділу," +
 					  " куди плануєте подавати документи для " +
@@ -578,7 +567,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, Requisites, ForeignPassport }
 		};
 
-		public static readonly Response RequisitesUkrainianPassport = new Response()
+		public static readonly Response RequisitesUkrainianPassport = new Response
 		{
 			Content = "УВАГА! У разі обміну паспорта громадянина України у зв’язку із зміною прізвища при оплаті" +
 					  " за адміністративну послугу особі необхідно вказувати  нове прізвище." +
@@ -632,7 +621,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			id = nameof(RequisitesUkrainianPassport),
 			Intents = new[] { Requisites, UkrainianPassport }
 		};
-		public static readonly Response WhereRequisitesUkrainianPassport = new Response()
+		public static readonly Response WhereRequisitesUkrainianPassport = new Response
 		{
 			Content = "УВАГА! У разі обміну паспорта громадянина України у зв’язку із зміною прізвища при оплаті" +
 					  " за адміністративну послугу особі необхідно вказувати  нове прізвище." +
@@ -687,7 +676,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, Requisites, UkrainianPassport }
 		};
 
-		public static readonly Response WherePassportNotCnap = new Response()
+		public static readonly Response WherePassportNotCnap = new Response
 		{
 			Content = "Для оформлення паспорта громадянина України / " +
 					  "для виїзду за кордон можна звертатися у " +
@@ -698,7 +687,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, Passport, Not, CNAP }
 		};
 
-		public static readonly Response WhereUkrainianPassportNotCnap = new Response()
+		public static readonly Response WhereUkrainianPassportNotCnap = new Response
 		{
 			Content = "Для оформлення паспорта громадянина України / " +
 					  "для виїзду за кордон можна звертатися у " +
@@ -709,7 +698,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, UkrainianPassport, Not, CNAP }
 		};
 
-		public static readonly Response WhereForeignPassportNotCnap = new Response()
+		public static readonly Response WhereForeignPassportNotCnap = new Response
 		{
 			Content = "Для оформлення паспорта громадянина України / " +
 					  "для виїзду за кордон можна звертатися у " +
@@ -720,7 +709,7 @@ namespace CnapLvivBot.Seeding.SeedValues
 			Intents = new[] { Where, ForeignPassport, Not, CNAP }
 		};
 
-		public static readonly Response StartResponse = new Response()
+		public static readonly Response StartResponse = new Response
 		{
 			Content =
 				"Привіт, я чат-бот від львівського ЦНАП'у. Поки в мене можна запитати про оформлення українського або закордонного паспорту, але дуже скоро я знатиму дуже багато!",
