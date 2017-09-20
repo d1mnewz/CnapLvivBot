@@ -13,10 +13,6 @@ namespace CnapLvivBot.Data.Infrastructure
 	{
 		protected IRepository<Response> Repository;
 
-		/// <exception cref="Exception">Invalid source from Web.config.</exception>
-		/// <exception cref="NotSupportedException">The collection is read-only and the operation attempts to modify the collection. </exception>
-		/// <exception cref="OverflowException">
-		///         <paramref name="value" /> represents a number that is less than <see cref="F:System.Int32.MinValue" /> or greater than <see cref="F:System.Int32.MaxValue" />. </exception>
 		public ReplyBuilder()
 		{
 			switch (AppSettings["Source"])
@@ -33,8 +29,6 @@ namespace CnapLvivBot.Data.Infrastructure
 
 		}
 
-		/// <exception cref="OverflowException">The array is multidimensional and contains more than <see cref="F:System.Int32.MaxValue" /> elements.</exception>
-		/// <exception cref="AggregateException">The task was canceled. The <see cref="P:System.AggregateException.InnerExceptions" /> collection contains a <see cref="T:System.Threading.Tasks.TaskCanceledException" /> object. -or-An exception was thrown during the execution of the task. The <see cref="P:System.AggregateException.InnerExceptions" /> collection contains information about the exception or exceptions. </exception>
 		public async Task<string> BuildReply(List<string> intents)
 		{
 			if (intents.Count <= 0) return "Сформулюйте своє питання по-іншому, будь ласка :)";
