@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace CnapLvivBot.DAL
+namespace CnapLvivBot.DAL.Entities
 {
+	[Serializable]
 	public class Response : BaseEntity
 	{
 		public string Content { get; set; }

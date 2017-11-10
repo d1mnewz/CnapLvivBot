@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot", "CnapLvivBot\CnapLvivBot.csproj", "{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot", "CnapLvivBot\CnapLvivBot.csproj", "{4A1B61D6-71B2-4277-8C1F-09DEAC7672CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot.DAL", "CnapLvivBot.DAL\CnapLvivBot.DAL.csproj", "{367AD323-1029-41D1-854E-960DD93CA5F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot.DAL", "CnapLvivBot.DAL\CnapLvivBot.DAL.csproj", "{295AA995-C15E-4E8B-B555-68E0BDFDA52C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot.BusinessLogic", "CnapLvivBot.BusinessLogic\CnapLvivBot.BusinessLogic.csproj", "{74DE28D0-18FD-4719-A150-0B158DAD11F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot.BusinessLogic", "CnapLvivBot.BusinessLogic\CnapLvivBot.BusinessLogic.csproj", "{2B5A74C5-AE16-48DD-B676-E5DC71CE9ACD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot.Core.Caching", "CnapLvivBot.Core.Caching\CnapLvivBot.Core.Caching.csproj", "{D4CC950E-20F0-48A9-BA6D-51AA7AE114C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnapLvivBot.Core.Caching.Redis", "CnapLvivBot.Core.Caching.Redis\CnapLvivBot.Core.Caching.Redis.csproj", "{DA140F0D-82BB-401A-9259-98D4682CACF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,20 +19,32 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{367AD323-1029-41D1-854E-960DD93CA5F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{367AD323-1029-41D1-854E-960DD93CA5F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{367AD323-1029-41D1-854E-960DD93CA5F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{367AD323-1029-41D1-854E-960DD93CA5F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74DE28D0-18FD-4719-A150-0B158DAD11F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74DE28D0-18FD-4719-A150-0B158DAD11F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74DE28D0-18FD-4719-A150-0B158DAD11F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74DE28D0-18FD-4719-A150-0B158DAD11F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A1B61D6-71B2-4277-8C1F-09DEAC7672CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A1B61D6-71B2-4277-8C1F-09DEAC7672CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A1B61D6-71B2-4277-8C1F-09DEAC7672CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A1B61D6-71B2-4277-8C1F-09DEAC7672CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{295AA995-C15E-4E8B-B555-68E0BDFDA52C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{295AA995-C15E-4E8B-B555-68E0BDFDA52C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{295AA995-C15E-4E8B-B555-68E0BDFDA52C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{295AA995-C15E-4E8B-B555-68E0BDFDA52C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B5A74C5-AE16-48DD-B676-E5DC71CE9ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B5A74C5-AE16-48DD-B676-E5DC71CE9ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B5A74C5-AE16-48DD-B676-E5DC71CE9ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B5A74C5-AE16-48DD-B676-E5DC71CE9ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4CC950E-20F0-48A9-BA6D-51AA7AE114C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4CC950E-20F0-48A9-BA6D-51AA7AE114C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4CC950E-20F0-48A9-BA6D-51AA7AE114C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4CC950E-20F0-48A9-BA6D-51AA7AE114C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA140F0D-82BB-401A-9259-98D4682CACF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA140F0D-82BB-401A-9259-98D4682CACF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA140F0D-82BB-401A-9259-98D4682CACF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA140F0D-82BB-401A-9259-98D4682CACF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+		SolutionGuid = {20C001C0-3FAF-4C58-83F2-6CB08E593D37}
 	EndGlobalSection
 EndGlobal

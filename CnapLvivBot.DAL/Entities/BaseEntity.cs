@@ -1,4 +1,4 @@
-﻿namespace CnapLvivBot.DAL
+﻿namespace CnapLvivBot.DAL.Entities
 {
 	public class BaseEntity
 	{

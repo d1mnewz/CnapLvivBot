@@ -1,35 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using com.valgut.libs.bots.Wit;
+using static System.Configuration.ConfigurationManager;
 
 namespace CnapLvivBot.DAL.Infrastructure
 {
+	[Serializable]
 	public class LanguageRecognitionTool : ILanguageRecognitionTool
 	{
-		protected WitClient Client { get; set; }
-
-		public LanguageRecognitionTool(string aiKey)
+		public LanguageRecognitionTool()
 		{
-			Client = new WitClient(aiKey);
+			Client = new WitClient(ConnectionStrings["WitAiKey"].ConnectionString);
 		}
+
+		[NonSerialized] protected WitClient Client;
 
 		public IList<string> GetIntentsFromMessage(string fromId, string text)
 		{
-			var msg = Client.Converse(fromId, text);
+			if (Client is null)
+				this.Client = new WitClient(ConnectionStrings["WitAiKey"].ConnectionString);
+
 			try
 			{
-				return msg?.entities["intent"].Select(x => x.value.ToString()).ToList();
+				return Client.Converse(fromId, text)?.entities["intent"].Select(x => x.value.ToString()).ToList();
 			}
 			catch (KeyNotFoundException)
 			{
 				return new List<string>();
 			}
 		}
-
-	}
-
-	public interface ILanguageRecognitionTool
-	{
-		IList<string> GetIntentsFromMessage(string fromId, string text);
 	}
 }

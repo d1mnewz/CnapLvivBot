@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using CnapLvivBot.DAL.Entities;
 
 namespace CnapLvivBot.DAL.Infrastructure
 {
@@ -20,6 +21,7 @@ namespace CnapLvivBot.DAL.Infrastructure
 		#endregion
 
 		#region Async
+
 		Task<bool> AnyAsync(int id);
 		Task<T> GetAsync(int id);
 		Task<IList<T>> GetAllAsync();

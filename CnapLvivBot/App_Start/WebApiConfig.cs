@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Web.Http;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using System.Web.Http;
 
 namespace CnapLvivBot
 {
@@ -15,8 +15,8 @@ namespace CnapLvivBot
 			JsonConvert.DefaultSettings = () => new JsonSerializerSettings
 			{
 				ContractResolver = new CamelCasePropertyNamesContractResolver(),
-				Formatting = Newtonsoft.Json.Formatting.Indented,
-				NullValueHandling = NullValueHandling.Ignore,
+				Formatting = Formatting.Indented,
+				NullValueHandling = NullValueHandling.Ignore
 			};
 
 			// Web API configuration and services
@@ -25,9 +25,9 @@ namespace CnapLvivBot
 			config.MapHttpAttributeRoutes();
 
 			config.Routes.MapHttpRoute(
-				name: "DefaultApi",
-				routeTemplate: "api/{controller}/{id}",
-				defaults: new { id = RouteParameter.Optional }
+				"DefaultApi",
+				"api/{controller}/{id}",
+				new {id = RouteParameter.Optional}
 			);
 		}
 	}
