@@ -2,13 +2,36 @@
 <html>
 <head>
   <title></title>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
 </head>
 <body style="font-family: 'Segoe UI'">
-<h1>CnapLvivBot</h1>
-<p>Describe your bot here and your terms of use etc.</p>
-<p>
-  Visit <a href="https://www.botframework.com/">Bot Framework</a> to register your bot. When you register it, remember to set your bot's endpoint to <pre>https://<i>your_bots_hostname</i>/api/messages</pre>
-</p>
+  <!--<script>
+    (function () {
+      var div = document.createElement("div");
+      document.getElementsByTagName('body')[0].appendChild(div);
+      div.outerHTML = "<div id='botDiv' style='height: 38px; position: fixed; bottom: 0; z-index: 1000; background-color: #fff'><div id='botTitleBar' style='height: 38px; width: 400px; position:fixed; cursor: pointer;'></div><iframe width=500' height=\"500\" src='https://webchat.botframework.com/embed/OfficeForAdministrativeServicesBot?s=bqLHeNkxWPU.cwA.P5E.SeJAWGlwLhq9F-186gkLFF6EatF6phDvPwmSSSs9VLw'></iframe></div>";
+      document.querySelector('body').addEventListener('click', function (e) {
+        e.target.matches = e.target.matches || e.target.msMatchesSelector;
+        if (e.target.matches('#botTitleBar')) {
+          var botDiv = document.querySelector('#botDiv');
+          botDiv.style.height = botDiv.style.height == '600px' ? '38px' : '600px';
+        };
+      });
+    }());
+  </script>-->
+  <h1>Бот для ЦНАП'у</h1>
+  <p>тестіть</p>
+  <p>якщо щось термінове, то стукайте в <a href="https://www.facebook.com/dmytro.zhluktenko">фб</a>.</p>
+  <a href="privacypolicy.htm" target="_blank">Privacy Policy</a>
+  <a href="terms.html" target="_blank">Terms of service</a>
+  <br />
+
+  <!--<a href='https://join.skype.com/bot/1c08401f-9ff4-4bb2-8161-6ec3a64da360'><img src='https://dev.botframework.com/Client/Images/Add-To-Skype-Buttons.png' /></a>
+
+  <a href='https://telegram.me/CnapLvivBot'><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Telegram_Messenger.png/768px-Telegram_Messenger.png" width="40" height="40"></a>-->
+  <br />
+  <div id="botTitleBar">
+    <iframe width="500" height="500" src='https://webchat.botframework.com/embed/OfficeForAdministrativeServicesBot?s=P7PkPmYRS38.cwA.VKA.480Gdg8SDi9J0xjyYlA6OQtJNL9Z4GX94WezzSnuGkI'></iframe>
+  </div>
 </body>
 </html>
