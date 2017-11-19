@@ -19,12 +19,12 @@ namespace CnapLvivBot.Core.Caching
 		/// <returns>The value associated with the specified key.</returns>
 		public T Get<T>(string key) where T : class
 		{
-			return default;
+			return default(T);
 		}
 
 		public IList<T> Get<T>(IList<string> keys) where T : class
 		{
-			return default;
+			return default(IList<T>);
 		}
 
 		public IList<T> GetAll<T>(string generate) where T : class

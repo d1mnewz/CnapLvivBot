@@ -30,12 +30,12 @@ namespace CnapLvivBot.Core.Caching
 			TimeSpan? cacheTime = null) where T : class
 		{
 			var val = await cm.GetAsync<T>(key);
-			if (Comparer<T>.Default.Compare(val, default) != 0)
+			if (Comparer<T>.Default.Compare(val, default(T)) != 0)
 
 				return val;
 
 			var result = await acuire();
-			if (Comparer<T>.Default.Compare(result, default) != 0)
+			if (Comparer<T>.Default.Compare(result, default(T)) != 0)
 
 				await cm.SetAsync(key, result, cacheTime);
 
@@ -50,12 +50,12 @@ namespace CnapLvivBot.Core.Caching
 			where T : class
 		{
 			var val = cacheManager.Get<T>(key);
-			if (Comparer<T>.Default.Compare(val, default) != 0)
+			if (Comparer<T>.Default.Compare(val, default(T)) != 0)
 
 				return val;
 
 			var result = acquire();
-			if (Comparer<T>.Default.Compare(result, default) != 0)
+			if (Comparer<T>.Default.Compare(result, default(T)) != 0)
 
 				cacheManager.Set(key, result, cacheTime);
 
