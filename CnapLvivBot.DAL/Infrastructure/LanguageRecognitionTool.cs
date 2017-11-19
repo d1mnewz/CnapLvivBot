@@ -18,14 +18,14 @@ namespace CnapLvivBot.DAL.Infrastructure
 
 		public IList<string> GetIntentsFromMessage(string fromId, string text)
 		{
-			if (Client is null)
+			if (Client == null)
 				Client = new WitClient(ConnectionStrings["WitAiKey"].ConnectionString);
 
 			try
 			{
 				return Client.Converse(fromId, text)?.entities["intent"].Select(x => x.value.ToString()).ToList();
 			}
-			catch (KeyNotFoundException)
+			catch (KeyNotFoundException ex)
 			{
 				return new List<string>();
 			}
