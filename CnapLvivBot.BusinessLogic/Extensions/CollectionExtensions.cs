@@ -51,8 +51,8 @@ namespace CnapLvivBot.BusinessLogic.Extensions
 		public static TSource MaxBy<TSource, TKey>(this IEnumerable<TSource> source,
 			Func<TSource, TKey> selector, IComparer<TKey> comparer)
 		{
-			if (source is null) throw new ArgumentNullException(nameof(source));
-			if (selector is null) throw new ArgumentNullException(nameof(selector));
+			if (source == null) throw new ArgumentNullException(nameof(source));
+			if (selector == null) throw new ArgumentNullException(nameof(selector));
 			comparer = comparer ?? Comparer<TKey>.Default;
 
 			using (var sourceIterator = source.GetEnumerator())
