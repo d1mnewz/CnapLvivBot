@@ -13,17 +13,14 @@ namespace CnapLvivBot.Core.Caching.Redis
 		/// <returns></returns>
 		public bool IsTransient(Exception ex)
 		{
-			switch (ex)
-			{
-				case null:
-					return false;
-				case TimeoutException _:
-					return true;
-				case RedisServerException _:
-					return true;
-				case RedisException _:
-					return true;
-			}
+			if (ex == null)
+				return false;
+			if (ex as TimeoutException != null)
+				return true;
+			if (ex as RedisServerException != null)
+				return true;
+			if (ex as RedisException != null)
+				return true;
 
 			return ex.InnerException != null && IsTransient(ex.InnerException);
 		}
