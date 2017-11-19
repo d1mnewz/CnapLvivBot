@@ -44,6 +44,11 @@ namespace CnapLvivBot.Core.Caching
 			return CacheManager.SetAsync(KeyInternal(id), item, _defaultExpiration);
 		}
 
+		public IList<T> GetAll()
+		{
+			return CacheManager.GetAll<T>(CacheKeyGenerator.Generate<T>(typeof(T).Name));
+		}
+
 		protected virtual T Prepare(T obj)
 		{
 			return obj;

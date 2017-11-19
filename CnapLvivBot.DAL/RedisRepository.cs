@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CnapLvivBot.Core.Caching;
 using CnapLvivBot.Core.Caching.Redis;
@@ -19,7 +20,6 @@ namespace CnapLvivBot.DAL
 		{
 			CacheManager = new RedisCacheManager(connectionString, errorRetryCount: 3,
 				errorRetryInterval: TimeSpan.FromMilliseconds(500));
-			;
 			CacheKeyGenerator = new VersionedCacheKeyGenerator();
 			_cache = new Cache<T>(CacheManager, CacheKeyGenerator);
 		}
@@ -31,37 +31,37 @@ namespace CnapLvivBot.DAL
 
 		public T Get(int id)
 		{
-			throw new NotImplementedException();
+			return _cache.Get(id);
 		}
 
 		public IList<T> GetAll()
 		{
-			throw new NotImplementedException();
+			return _cache.GetAll();
 		}
 
 		public IList<T> Get(IList<int> ids)
 		{
-			throw new NotImplementedException();
+			return _cache.Get(ids);
 		}
 
 		public void Add(T entity)
 		{
-			throw new NotImplementedException();
+			_cache.Add(entity.Id, entity);
 		}
 
 		public void Add(IList<T> entities)
 		{
-			throw new NotImplementedException();
+			_cache.AddAll(entities.ToDictionary(x => x.Id, x => x));
 		}
 
 		public void Update(T entity)
 		{
-			throw new NotImplementedException();
+			_cache.Add(entity.Id, entity);
 		}
 
 		public void Remove(int id)
 		{
-			throw new NotImplementedException();
+			_cache.Remove(id);
 		}
 
 		public int Count()

@@ -44,6 +44,19 @@ namespace CnapLvivBot.Core.Caching.Redis
 				_cacheClient.Serializer.Deserialize<T>(redisValue)).ToList();
 		}
 
+		public IList<T> GetAll<T>(string generate) where T : class
+		{
+
+			//var result = new List<T>();
+			//var dummy = _cacheClient.SearchKeys(generate + "*");
+			//foreach (var key in dummy)
+			//{
+			//	result.Add(_cacheClient.Get<T>(key));
+			//}
+			//return result;
+			return _cacheClient.GetAll<T>(generate, 100); // TODO:
+		}
+
 
 		public void Set<T>(string key, T data, TimeSpan? cacheTime = null) where T : class
 		{
@@ -76,7 +89,7 @@ namespace CnapLvivBot.Core.Caching.Redis
 			{
 				var result = _cacheClient.Database.ScriptEvaluate("return redis.call('del', unpack(redis.call('keys', ARGV[1])))",
 					null,
-					new RedisValue[] {pattern});
+					new RedisValue[] { pattern });
 				try
 				{
 					return Convert.ToInt32(result.ToString().Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0]);
@@ -154,7 +167,7 @@ namespace CnapLvivBot.Core.Caching.Redis
 			{
 				var result = _cacheClient.Database.ScriptEvaluate("return redis.call('del', unpack(redis.call('keys', ARGV[1])))",
 					null,
-					new RedisValue[] {pattern});
+					new RedisValue[] { pattern });
 				try
 				{
 					return Task.FromResult(

@@ -36,6 +36,11 @@ namespace CnapLvivBot.Core.Caching
 			return (T) Cache[key];
 		}
 
+		public IList<T> GetAll<T>(string generate) where T : class
+		{
+			throw new NotImplementedException();
+		}
+
 		public void Set<T>(string key, T data, TimeSpan? cacheTime) where T : class
 		{
 			if (data is null)

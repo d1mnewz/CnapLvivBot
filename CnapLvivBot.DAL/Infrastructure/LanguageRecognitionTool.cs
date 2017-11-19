@@ -9,17 +9,17 @@ namespace CnapLvivBot.DAL.Infrastructure
 	[Serializable]
 	public class LanguageRecognitionTool : ILanguageRecognitionTool
 	{
+		[NonSerialized] protected WitClient Client;
+
 		public LanguageRecognitionTool()
 		{
 			Client = new WitClient(ConnectionStrings["WitAiKey"].ConnectionString);
 		}
 
-		[NonSerialized] protected WitClient Client;
-
 		public IList<string> GetIntentsFromMessage(string fromId, string text)
 		{
 			if (Client is null)
-				this.Client = new WitClient(ConnectionStrings["WitAiKey"].ConnectionString);
+				Client = new WitClient(ConnectionStrings["WitAiKey"].ConnectionString);
 
 			try
 			{

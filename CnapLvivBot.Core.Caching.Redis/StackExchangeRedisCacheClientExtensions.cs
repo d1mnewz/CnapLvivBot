@@ -27,6 +27,35 @@ namespace CnapLvivBot.Core.Caching.Redis
 			return res;
 		}
 
+		public static IList<T> GetAll<T>(this StackExchangeRedisCacheClient cacheClient, string typeKey, int limit) // TODO:
+		{
+			var script = CreateLuaScriptForScan(typeKey, limit);
+			var redisResultArray =
+				(RedisResult[])cacheClient.Database.ScriptEvaluate(script);
+			var result = new List<T>();
+			bool dummy = false;
+			foreach (var t in redisResultArray.ToList())
+			{
+
+				if (dummy)
+					if (!t.IsNull)
+					{
+
+						var dummy1 = (string[])cacheClient.Serializer.Deserialize((byte[])t);
+
+						var obj = cacheClient.Serializer.Deserialize<T>((byte[])t);
+
+
+
+					}
+				dummy = true;
+
+			}
+
+			return result;
+
+		}
+
 		public static bool AddAll<T>(this StackExchangeRedisCacheClient cacheClient, IList<Tuple<string, T>> items,
 			DateTimeOffset? expiresAt, TimeSpan? expiresIn, bool fireAndForget)
 		{
@@ -63,12 +92,12 @@ namespace CnapLvivBot.Core.Caching.Redis
 
 		public static void SetAdd(this StackExchangeRedisCacheClient cacheClient, string key, IEnumerable<string> values)
 		{
-			cacheClient.Database.SetAdd(key, values.Select(x => (RedisValue) x).ToArray());
+			cacheClient.Database.SetAdd(key, values.Select(x => (RedisValue)x).ToArray());
 		}
 
 		public static Task SetAddAsync(this StackExchangeRedisCacheClient cacheClient, string key, IEnumerable<string> values)
 		{
-			return cacheClient.Database.SetAddAsync(key, values.Select(x => (RedisValue) x).ToArray());
+			return cacheClient.Database.SetAddAsync(key, values.Select(x => (RedisValue)x).ToArray());
 		}
 
 		public static void SetRemove(this StackExchangeRedisCacheClient cacheClient, string key, string value)
@@ -83,26 +112,26 @@ namespace CnapLvivBot.Core.Caching.Redis
 
 		public static void SetRemove(this StackExchangeRedisCacheClient cacheClient, string key, IEnumerable<string> values)
 		{
-			cacheClient.Database.SetRemove(key, values.Select(x => (RedisValue) x).ToArray());
+			cacheClient.Database.SetRemove(key, values.Select(x => (RedisValue)x).ToArray());
 		}
 
 		public static Task SetRemoveAsync(this StackExchangeRedisCacheClient cacheClient, string key,
 			IEnumerable<string> values)
 		{
-			return cacheClient.Database.SetRemoveAsync(key, values.Select(x => (RedisValue) x).ToArray());
+			return cacheClient.Database.SetRemoveAsync(key, values.Select(x => (RedisValue)x).ToArray());
 		}
 
 		public static void RemoveAllKeys(this StackExchangeRedisCacheClient cacheClient, IEnumerable<string> keys,
 			bool fireAndForget = false)
 		{
-			cacheClient.Database.KeyDelete(keys.Select(x => (RedisKey) x).ToArray(),
+			cacheClient.Database.KeyDelete(keys.Select(x => (RedisKey)x).ToArray(),
 				fireAndForget ? CommandFlags.FireAndForget : CommandFlags.None);
 		}
 
 		public static Task RemoveAllKeysAsync(this StackExchangeRedisCacheClient cacheClient, IEnumerable<string> keys,
 			bool fireAndForget = false)
 		{
-			return cacheClient.Database.KeyDeleteAsync(keys.Select(x => (RedisKey) x).ToArray(),
+			return cacheClient.Database.KeyDeleteAsync(keys.Select(x => (RedisKey)x).ToArray(),
 				fireAndForget ? CommandFlags.FireAndForget : CommandFlags.None);
 		}
 
@@ -115,16 +144,21 @@ namespace CnapLvivBot.Core.Caching.Redis
 
 			var redisKeyArray = new RedisKey[keysList.Count];
 			var redisResultArray =
-				(RedisResult[]) cacheClient.Database.ScriptEvaluate(CreateLuaScriptForMget(redisKeyArray, keysList), redisKeyArray);
+				(RedisResult[])cacheClient.Database.ScriptEvaluate(CreateLuaScriptForMget(redisKeyArray, keysList), redisKeyArray);
 			var result = new Dictionary<string, object>();
 
-			for (var index = 0; index < redisResultArray.Count(); ++index)
+			for (var index = 0; index < redisResultArray.Length; ++index)
 				if (!redisResultArray[index].IsNull)
 				{
-					var obj = cacheClient.Serializer.Deserialize<T>((byte[]) redisResultArray[index]);
+					var obj = cacheClient.Serializer.Deserialize<T>((byte[])redisResultArray[index]);
 					result.Add(keysList[index], obj);
 				}
 			return result;
+		}
+
+		private static string CreateLuaScriptForScan(string typeKey, int limit)
+		{
+			return $"return redis.call('SCAN',{0},'MATCH','{typeKey}*','COUNT',{limit})";
 		}
 
 		private static string CreateLuaScriptForMget(IList<RedisKey> redisKeys, IReadOnlyList<string> keysList)

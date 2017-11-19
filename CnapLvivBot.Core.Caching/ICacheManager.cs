@@ -24,6 +24,12 @@ namespace CnapLvivBot.Core.Caching
 		///// <returns>The values associated with specified keys.</returns>
 		IList<T> Get<T>(IList<string> keys) where T : class;
 
+		///// <summary>
+		///// Gets the values associated with specified keys.
+		///// </summary>
+		///// <typeparam name="T">Type</typeparam>
+		IList<T> GetAll<T>(string generate) where T : class;
+
 		/// <summary>
 		///     Adds the specified key and object to the cache.
 		/// </summary>

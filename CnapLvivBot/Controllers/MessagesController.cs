@@ -2,15 +2,28 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using CnapLvivBot.BusinessLogic;
+using CnapLvivBot.DAL.Infrastructure;
 using CnapLvivBot.Dialogs;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using static System.Configuration.ConfigurationManager;
 
 namespace CnapLvivBot.Controllers
 {
 	[BotAuthentication]
 	public class MessagesController : ApiController
 	{
+		private readonly ILanguageRecognitionTool _languageRecognitionTool;
+		private readonly IReplyBuilder _replyBuilder;
+
+		protected MessagesController()
+		{
+			_replyBuilder = new ReplyBuilder(ConnectionStrings["Redis"].ConnectionString);
+			_languageRecognitionTool =
+				new LanguageRecognitionTool();
+		}
+
 		/// <summary>
 		///     POST: api/Messages
 		///     Receive a message from a user and reply to it
@@ -18,7 +31,9 @@ namespace CnapLvivBot.Controllers
 		public async Task<HttpResponseMessage> Post([FromBody] Activity activity)
 		{
 			if (activity.Type == ActivityTypes.Message)
-				await Conversation.SendAsync(activity, () => new RootDialog());
+			{
+				await Conversation.SendAsync(activity, () => new RootDialog(_languageRecognitionTool, _replyBuilder));
+			}
 			else
 				HandleSystemMessage(activity);
 			var response = Request.CreateResponse(HttpStatusCode.OK);
